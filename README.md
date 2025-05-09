@@ -1,125 +1,70 @@
-# My Portfolio Website
+# Getting Started with Create React App
 
-Welcome to my portfolio website! This is a React-based application designed to showcase my skills, projects, and experience as a software developer. It’s built with **Tailwind CSS** for styling and features a user-friendly interface, a chatbot, and a contact form for direct communication.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
----
+## Available Scripts
 
-## Features
+In the project directory, you can run:
 
-### 1. **Portfolio Showcase**
-- **Projects**: A section dedicated to displaying all the projects I’ve worked on, with links to GitHub repositories and live demos.
-- **Skills**: An organized list of technical skills acquired during the Moringa School Bootcamp.
-- **About Me**: A brief introduction highlighting my journey, skills, and expertise.
+### `npm start`
 
-### 2. **Interactive Chatbot**
-- **Ask Questions**: Users can ask the chatbot anything about my portfolio (e.g., "What projects have you worked on?").
-- **Customizable Positioning**: The chatbot can be moved to any part of the screen for convenience or hidden entirely if the user prefers not to use it.
-- **Responsive**: Works seamlessly across all devices.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### 3. **Contact Form**
-- **Direct Communication**: Users can send messages (up to 400 words) with file attachments (up to 5MB per file).
-- **Email Integration**: Messages are sent directly to my email without navigating away from the website.
-- **Google reCAPTCHA**: Protects the form from spam and abuse.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### 4. **Responsive Design**
-- Fully responsive and optimized for various screen sizes, from mobile phones to desktops.
+### `npm test`
 
-### 5. **Footer**
-- Links to all my social media accounts for further engagement.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
----
+### `npm run build`
 
-## Technologies Used
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- **React**: For building the frontend.
-- **Tailwind CSS**: For responsive and modern styling.
-- **Node.js** and **Express.js**: Backend server for handling form submissions.
-- **Google reCAPTCHA**: For spam protection.
-- **Email Integration**: To send messages via the contact form.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
----
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Installation and Setup
+### `npm run eject`
 
-### Prerequisites
-Ensure you have the following installed:
-- Node.js
-- npm or yarn
-- Git
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-### Clone the Repository
-```bash
-git clone https://github.com/benjaminmweribaya/React-Based-Portfolio
-cd React-Based-Portfolio
-```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Install Dependencies
-1. Navigate to the frontend directory and install dependencies:
-   ```bash
-   cd frontend
-   npm install
-   ```
-2. Navigate to the backend directory and install dependencies:
-   ```bash
-   cd ../backend
-   npm install
-   ```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-### Start the Development Server
-1. Start the backend:
-   ```bash
-   cd backend
-   npm start
-   ```
-2. Start the frontend:
-   ```bash
-   cd ../frontend
-   npm start
-   ```
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
----
+## Learn More
 
-## Usage
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-1. **Visit the Homepage**: The homepage displays an overview of my portfolio.
-2. **Navigate**: Use the navigation bar to explore different sections like About, Skills, Projects, and Contact.
-3. **Chatbot Interaction**: 
-   - Ask questions about the portfolio (e.g., “What are your skills?”).
-   - Move the chatbot to any position or hide it entirely using the chatbot’s UI controls.
-4. **Contact Form**: Fill in your details and send a message directly to my email with optional file attachments.
-5. **Explore Projects**: View detailed information about each project, including links to repositories and live demos.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
----
+### Code Splitting
 
-## Customization
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Chatbot
-- The chatbot responds to portfolio-related queries and can be easily extended to answer more questions.
-- Users can:
-  - Move the chatbot by dragging it across the screen.
-  - Close or hide the chatbot using the "X" button.
+### Analyzing the Bundle Size
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+### Making a Progressive Web App
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-## Contributing
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+### Advanced Configuration
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-## Contact
-If you have any questions or feedback, feel free to reach out to me via:
-- Email: [b3njaminbaya@gmail.com](mailto:b3njaminbaya@gmail.com)
-- WhatsApp: [https://wa.me/+254783797132](https://wa.me/+254783797132)
+### Deployment
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-## Feedback
-I’d love to hear your thoughts about my portfolio! If you encounter any bugs or issues, please report them via the GitHub issues tab.
+### `npm run build` fails to minify
 
----
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
