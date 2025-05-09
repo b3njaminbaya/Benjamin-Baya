@@ -32,7 +32,7 @@ const Contact = () => {
         </motion.h2>
 
         <form
-          action="https://formsubmit.co/b3njaminbaya@gmail.com" // Replace with your real email
+          action="https://formsubmit.co/b3njaminbaya@gmail.com" 
           method="POST"
           encType="multipart/form-data"
           className="bg-white shadow-md rounded-lg p-8"
@@ -40,7 +40,7 @@ const Contact = () => {
           {/* Anti-bot hidden input */}
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="box" />
-          <input type="hidden" name="_next" value="https://yourwebsite.com/thanks" />
+          <input type="hidden" name="_next" value="https://benjamin-mweri-baya.vercel.app/thanks" />
 
           <div className="mb-4">
             <label className="block text-sm font-semibold mb-1">Name</label>

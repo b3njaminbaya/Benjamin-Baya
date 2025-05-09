@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -11,19 +12,29 @@ import ThankYou from './components/ThankYou';
 
 const App = () => {
   return (
-    <div>
-      <Header />
-      <main>
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
-        <ThankYou />
-      </main>
-      <Footer />
-      <Chatbot />
-      <ScrollToTop />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/thanks" element={<ThankYou />} />
+
+        <Route
+          path="/"
+          element={
+            <>
+              <Header />
+              <main>
+                <About />
+                <Skills />
+                <Projects />
+                <Contact />
+              </main>
+              <Footer />
+              <Chatbot />
+              <ScrollToTop />
+            </>
+          }
+        />
+      </Routes>
+    </Router>
   );
 };
 
