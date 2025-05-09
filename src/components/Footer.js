@@ -20,7 +20,7 @@ const socialLinks = [
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 mt-10">
+    <footer id="footer" className="bg-gray-900 text-gray-300 py-10 mt-10">
       <motion.div
         className="container mx-auto px-4 text-center"
         initial={{ opacity: 0, y: 40 }}

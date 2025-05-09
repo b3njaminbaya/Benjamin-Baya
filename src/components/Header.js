@@ -1,50 +1,150 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
-import { ArrowRight, Mail } from 'lucide-react';
+import {
+  ArrowRight, Mail, Menu, X, User, Code, Folder, Send, FileText
+} from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
     <header className="bg-gray-900 text-white min-h-screen flex flex-col justify-between">
-      {/* Navbar */}
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center z-50">
+      {/* ========== Navbar ========== */}
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center z-50 relative">
         <h1 className="text-xl font-bold">Benjamin Mweri Baya</h1>
+
+        {/* ========== Hamburger Button for Drawer ========== */}
         <button
           className="block md:hidden text-white focus:outline-none"
           onClick={toggleMenu}
         >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          <Menu size={24} />
         </button>
-        <nav className={`${menuOpen ? "block" : "hidden"} md:block absolute md:static top-16 left-0 w-full md:w-auto bg-gray-900 md:bg-transparent`}>
-          <ul className="flex flex-col md:flex-row md:space-x-6 items-center text-center">
-            <li><Link to="about" smooth duration={500} className="cursor-pointer px-4 py-2 hover:text-gray-400">About</Link></li>
-            <li><Link to="skills" smooth duration={500} className="cursor-pointer px-4 py-2 hover:text-gray-400">Skills</Link></li>
-            <li><Link to="projects" smooth duration={500} className="cursor-pointer px-4 py-2 hover:text-gray-400">Projects</Link></li>
-            <li><Link to="contact" smooth duration={500} className="cursor-pointer px-4 py-2 hover:text-gray-400">Contact</Link></li>
-          </ul>
+
+        {/* ========== Desktop Nav ========== */}
+        <nav className="hidden md:flex space-x-6 items-center">
+          <Link to="about" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+            <User size={16} /> About
+          </Link>
+          <Link to="skills" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+            <Code size={16} /> Skills
+          </Link>
+          <Link to="projects" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+            <Folder size={16} /> Projects
+          </Link>
+          <Link to="contact" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+            <Send size={16} /> Contact
+          </Link>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 hover:text-gray-400"
+          >
+            <FileText size={16} /> Resume
+          </a>
+          <Link to="footer" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+            <Send size={16} /> Connect
+          </Link>
         </nav>
       </div>
 
-      {/* Hero Section */}
+      {/* ========== Mobile Drawer ========== */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              className="fixed inset-0 bg-black bg-opacity-50 z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={toggleMenu}
+            />
+
+            {/* Sliding Panel */}
+            <motion.div
+              className="fixed top-0 right-0 h-full w-64 bg-gray-800 text-white p-6 z-50 shadow-lg"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.3 }}
+            >
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-lg font-bold">Menu</h2>
+                <button onClick={toggleMenu}>
+                  <X size={24} />
+                </button>
+              </div>
+
+              <ul className="space-y-4 text-base">
+                <li>
+                  <Link
+                    to="about"
+                    smooth duration={500}
+                    className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer"
+                    onClick={toggleMenu}
+                  >
+                    <User size={18} /> About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="skills"
+                    smooth duration={500}
+                    className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer"
+                    onClick={toggleMenu}
+                  >
+                    <Code size={18} /> Skills
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="projects"
+                    smooth duration={500}
+                    className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer"
+                    onClick={toggleMenu}
+                  >
+                    <Folder size={18} /> Projects
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="contact"
+                    smooth duration={500}
+                    className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer"
+                    onClick={toggleMenu}
+                  >
+                    <Send size={18} /> Contact
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-indigo-400"
+                    onClick={toggleMenu}
+                  >
+                    <FileText size={18} /> Resume
+                  </a>
+                </li>
+                <li>
+                  <Link to="footer" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}>
+                    <Send size={18} /> Connect
+                  </Link>
+                </li>
+              </ul>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ========== Hero Section ========== */}
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +158,12 @@ const Header = () => {
         <h3 className="text-xl md:text-3xl font-medium text-gray-400 mb-6">
           <Typewriter
             options={{
-              strings: ['Full-Stack Software Developer', 'Flask & React Specialist', 'Cloud-Ready App Builder'],
+              strings: [
+                'Full-Stack Software Developer',
+                'Flask & React Specialist',
+                'Cloud-Ready App Builder',
+                'UI/UX Designer',
+              ],
               autoStart: true,
               loop: true,
               delay: 75,
@@ -70,6 +175,7 @@ const Header = () => {
           I build scalable, cloud-ready, and user-focused applications with modern technologies that solve real-world problems.
         </p>
 
+        {/* Hero CTAs */}
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
             to="projects"
@@ -89,6 +195,15 @@ const Header = () => {
             <Mail className="mr-2" size={18} />
             Contact Me
           </Link>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-all"
+          >
+            <FileText className="mr-2" size={18} />
+            Download Resume
+          </a>
         </div>
       </motion.section>
     </header>
