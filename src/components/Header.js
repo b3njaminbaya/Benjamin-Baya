@@ -12,7 +12,19 @@ const Header = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <header className="bg-gray-900 text-white min-h-screen flex flex-col justify-between">
+    <header className="relative bg-gray-900 text-white min-h-screen flex flex-col justify-between overflow-hidden ">
+      {/* ========== Decorative Blob Background SVG ========== */}
+      <div className="absolute top-[-100px] left-[-150px] z-0 opacity-10 pointer-events-none">
+        <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" className="w-[1000px] h-auto">
+          <g transform="translate(300,300)">
+            <path
+              d="M152.3,-151.6C196.4,-108.6,222.1,-42.4,212.6,19.2C203.1,80.7,158.4,137.7,104.5,159.5C50.6,181.3,-13.6,168,-75.6,138.7C-137.5,109.4,-197.2,64.1,-210.4,4.8C-223.5,-54.5,-190,-127.9,-134.5,-170.5C-79,-213.2,-1.5,-225.1,59.3,-213.6C120.2,-202.1,160.5,-167.9,152.3,-151.6Z"
+              fill="#6366f1"
+            />
+          </g>
+        </svg>
+      </div>
+
       {/* ========== Navbar ========== */}
       <div className="container mx-auto px-4 py-4 flex justify-between items-center z-50 relative">
         <h1 className="text-xl font-bold">Benjamin Mweri Baya</h1>
@@ -151,6 +163,11 @@ const Header = () => {
         transition={{ duration: 1 }}
         className="flex flex-col items-center text-center mt-20 px-6"
       >
+        {/* 👇 Greeting Badge */}
+        <div className="bg-indigo-600 text-white text-sm px-4 py-1 rounded-full mb-6 animate-pulse">
+          👋 Welcome to my portfolio
+        </div>
+
         <h2 className="text-4xl md:text-6xl font-extrabold mb-4">
           Hello, I’m <span className="text-indigo-400">Benjamin</span>
         </h2>

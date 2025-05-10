@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Github, Linkedin, Twitter, Instagram, Facebook,
-   Youtube, Phone, MessageSquareText
+   Youtube, MessageSquareText
 } from 'lucide-react';
 import { SiTelegram, SiTiktok } from 'react-icons/si';
 
