@@ -29,7 +29,7 @@ const Chatbot = () => {
     const text = message.toLowerCase();
 
     // Greet the user
-    if (text.includes('hi') || text.includes('hello')) {
+    if (text.includes('hi') || text.includes('hello') || text.includes('hey')) {
       return `👋 Hi there! I'm Benjamin's assistant. Ask me about projects, skills, contact info, or how to get started.`;
 
       // Skills response updated
