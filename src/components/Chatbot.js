@@ -21,8 +21,6 @@ const Chatbot = () => {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const chatbotRef = useRef(null);
 
-  const topics = ['projects', 'skills', 'contact', 'about', 'GitHub'];
-
   useEffect(() => {
     localStorage.setItem('chatMessages', JSON.stringify(messages));
   }, [messages]);
