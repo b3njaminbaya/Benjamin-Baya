@@ -1,4 +1,3 @@
-```markdown
 # Benjamin Mweri Baya – Portfolio Website 💻🌍
 
 Welcome to my professional developer portfolio! This is a sleek, modern, and fully responsive single-page website built to showcase my background, projects, skills, resume, and contact details. It also includes a draggable chatbot powered by local logic and animations for a rich interactive user experience.
