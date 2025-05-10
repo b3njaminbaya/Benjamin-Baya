@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+```markdown
+# Benjamin Mweri Baya – Portfolio Website 💻🌍
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my professional developer portfolio! This is a sleek, modern, and fully responsive single-page website built to showcase my background, projects, skills, resume, and contact details. It also includes a draggable chatbot powered by local logic and animations for a rich interactive user experience.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Live Demo
 
-### `npm start`
+🔗 [Visit the Live Website](https://benjamin-mweri-baya.vercel.app)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📂 Project Structure
 
-### `npm test`
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+.
+├── build/                 # Production build files
+├── public/                # Static public files (e.g. index.html, resume)
+├── src/                   # Source code
+│   ├── assets/            # Image and asset files
+│   ├── components/        # All reusable React components
+│   ├── App.js             # Main application component
+│   ├── index.js           # Entry point for React DOM
+│   └── index.css          # Tailwind base styling
+├── tailwind.config.js     # Tailwind configuration
+├── package.json           # Project metadata and dependencies
+├── LICENSE
+└── README.md
 
-### `npm run build`
+````
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Frontend Framework:** React.js
+- **Styling:** Tailwind CSS, Custom CSS
+- **Icons:** Lucide Icons
+- **Animations:** Framer Motion, Typewriter Effect
+- **Forms:** [FormSubmit](https://formsubmit.co) integration
+- **Deployment:** Vercel
+- **PDF Download:** Embedded resume for easy recruiter access
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ✨ Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- ⚡ **Responsive Design** – Fully functional across all devices (mobile, tablet, desktop)
+- 🧠 **Smart Chatbot** – Draggable chatbot assistant with emoji and typing animations, local memory persistence, and sound effects
+- 🎯 **Interactive Sections** – Smooth scroll navigation with Typewriter introduction
+- 📁 **Projects Gallery** – Animated project cards with GitHub and live demo links
+- 📩 **Contact Form** – Integrated with FormSubmit, includes file attachment and reCAPTCHA-ready structure
+- ✅ **Success Page** – Thank You confirmation component upon form submission
+- 📄 **Resume Download** – One-click access to PDF resume from both the hero section and nav bar
+- 🧾 **Client Intake CTA** – Additional form for business clients seeking development services via Tevexa Technologies
+- 🔝 **Scroll to Top** – Floating scroll-to-top button for enhanced UX
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📸 Screenshots
 
-## Learn More
+| Hero Section                              | Projects Section                         | Chatbot                             |
+|------------------------------------------|------------------------------------------|--------------------------------------|
+| ![Hero](./public/screenshot-hero.png)    | ![Projects](./public/screenshot-projects.png) | ![Chatbot](./public/screenshot-chatbot.png) |
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📄 Resume
 
-### Code Splitting
+Your resume (`resume.pdf`) is stored in the `/public` and `/build` directories to ensure accessibility and download compatibility in production.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Users can download it via:
 
-### Analyzing the Bundle Size
+- Navbar link (Resume)
+- Hero section "Download Resume" button
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🔧 Setup Instructions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. **Clone the repository**
 
-### Advanced Configuration
+   ```bash
+   git clone https://github.com/benjaminmweribaya/Benjamin-Mweri-Baya.git
+   cd Benjamin-Mweri-Baya
+````
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+2. **Install dependencies**
 
-### Deployment
+   ```bash
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+3. **Run the app locally**
 
-### `npm run build` fails to minify
+   ```bash
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+4. **Build for production**
+
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📬 Contact
+
+📧 **Email:** [b3njaminbaya@gmail.com](mailto:b3njaminbaya@gmail.com)
+🌐 **Website:** [www.benjaminmweribaya.com](https://benjamin-mweri-baya.vercel.app)
+📱 **WhatsApp:** [+254 783 797132](https://wa.me/254783797132)
+
+---
+
+## 🌟 Contributing
+
+This portfolio is personal, but suggestions and constructive contributions are always welcome. Feel free to fork the repo and submit a PR if you have something helpful!
+
+---
+
+## 📝 License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+---
+
+## 🙏 Acknowledgements
+
+* [FormSubmit](https://formsubmit.co) – for serverless form handling
+* [Lucide Icons](https://lucide.dev/)
+* [Framer Motion](https://www.framer.com/motion/)
+* [TypewriterJS](https://www.npmjs.com/package/typewriter-effect)
+* [Vercel](https://vercel.com/) – for seamless React deployment
+
+---
+
+```
