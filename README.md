@@ -76,7 +76,7 @@ Users can download it via:
    ```bash
    git clone https://github.com/benjaminmweribaya/Benjamin-Mweri-Baya.git
    cd Benjamin-Mweri-Baya
-````
+   ````
 
 2. **Install dependencies**
 
