@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { FilePlus } from 'lucide-react';
 
 const Contact = () => {
   const [wordCount, setWordCount] = useState(0);
@@ -32,7 +33,7 @@ const Contact = () => {
         </motion.h2>
 
         <form
-          action="https://formsubmit.co/b3njaminbaya@gmail.com" 
+          action="https://formsubmit.co/b3njaminbaya@gmail.com"
           method="POST"
           encType="multipart/form-data"
           className="bg-white shadow-md rounded-lg p-8"
@@ -94,6 +95,32 @@ const Contact = () => {
             </button>
           </div>
         </form>
+
+        {/* ✅ Add Client Intake Card Below */}
+        <motion.div
+          className="mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSc5wB4BdJ-QwCgiV0e_rWxpubjcZTiLgDkt3AFh3B_VPCg7GA/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block bg-indigo-50 hover:bg-indigo-100 transition-colors border border-indigo-200 rounded-lg p-6 shadow-md text-center"
+          >
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <FilePlus className="text-indigo-600" size={20} />
+              <span className="text-indigo-700 font-semibold text-lg">
+                Need a website?
+              </span>
+            </div>
+            <p className="text-gray-600">
+              Fill in the client intake form at <span className="font-medium text-indigo-700">Tevexa Technologies Limited</span>.
+            </p>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
