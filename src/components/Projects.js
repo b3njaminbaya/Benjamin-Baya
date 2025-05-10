@@ -4,17 +4,32 @@ import { Github, ExternalLink, X } from 'lucide-react';
 
 const projects = [
   {
-    title: "Becof Web App",
-    description: "An E-Commerce React-based platform with educational content and farming resources.",
-    tech: ["React", "Tailwind CSS", "Flask", "Vercel"],
-    github: "https://github.com/benjaminmweribaya/becof-web-app",
-    liveDemo: "https://becof-web-app.vercel.app",
+    title: "Task Management App",
+    description: "A comprehensive task management system designed to streamline and optimize organizational task tracking, assignment, and completion. ",
+    tech: ["React", "Vite", "Tailwind CSS", "Flask", "PostgreSQL", "WebSocket"],
+    github: "https://github.com/benjaminmweribaya/taskly-app-front-end",
+    liveDemo: "https://taskly-app-iota.vercel.app",
   },
   {
-    title: "Reading Tracker CLI",
-    description: "A CLI tool for managing book collections and tracking reading progress.",
-    tech: ["Python", "CLI", "OOP"],
-    github: "https://github.com/benjaminmweribaya/CLI-based-Reading-Tracker-Application",
+    title: "Micro Donation App",
+    description: "A Flask-React Web Application that enables users to make small, impactful donations to support various causes like education, healthcare, and environmental initiatives.",
+    tech: ["React", "Flask", "Tailwind CSS", "PostgreSQL", "WebSocket", "M-pesa API", "Payment Gateway"],
+    github: "https://github.com/benjaminmweribaya/Micro-Donation-Platform",
+    liveDemo: "https://micro-donation-platform.vercel.app",
+  },
+  {
+    title: "E-Commerce and Consulting Platform",
+    description: "A full-stack e-commerce and consulting platform that allows Becof Organic Chemicals to sell their products, as well as allow users to seek expert advice on various agricultural topics.",
+    tech: ["React", "Tailwind", "Flask", "PostgreSQL", "Node.js", "M-pesa API", "Payment Gateway"],
+    github: "https://github.com/benjaminmweribaya/becof-organic-chemicals",
+    liveDemo: "https://becof-organic-chemicals.vercel.app",
+  },
+  {
+    title: "Turkana Tech Youths Hub",
+    description: "A full-stack community-based platform built with Flask and React that enables users to contribute to impactful causes through monetary donations or volunteer opportunities. The application provides a secure and user-friendly interface for supporting grassroots initiatives, complete with integrated payments via the Mpesa API and a robust donation tracking system.",
+    tech: [ "React", "Flask", "Tailwind CSS", "Material UI (MUI)", "Lucide Icons", "Mpesa API", "PostgreSQL", "Payment Gateway Integration"],
+    github: "https://github.com/benjaminmweribaya/turkana-tech-hub",
+    liveDemo: "https://turkana-tech-hub.vercel.app",
   },
   {
     title: "Eco Home Guide",
@@ -31,18 +46,10 @@ const projects = [
     liveDemo: "https://benjaminmweribaya.github.io/movie-character-explorer",
   },
   {
-    title: "Textile Waste Recycling App",
-    description: "A React app for donations, eco-commerce, and waste recycling initiatives.",
-    tech: ["React", "Tailwind", "Node.js", "MongoDB"],
-    github: "https://github.com/benjaminmweribaya/textile-waste-recycling-app",
-    liveDemo: "https://textile-waste-recycling-app.vercel.app",
-  },
-  {
-    title: "Turkana Tech Youths Hub",
-    description: "A donation platform for supporting causes in the Turkana region.",
-    tech: ["React", "Flask", "Vercel"],
-    github: "https://github.com/benjaminmweribaya/turkana-tech-youths-hub",
-    liveDemo: "https://www.turkanatechyouthshub.com",
+    title: "Reading Tracker CLI",
+    description: "A CLI tool for managing book collections and tracking reading progress.",
+    tech: ["Python", "CLI", "OOP"],
+    github: "https://github.com/benjaminmweribaya/CLI-based-Reading-Tracker-Application",
   },
 ];
 
