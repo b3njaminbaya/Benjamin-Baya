@@ -59,17 +59,9 @@ Welcome to my professional developer portfolio! This is a sleek, modern, and ful
 
 ---
 
-## 📸 Screenshots
-
-| Hero Section                              | Projects Section                         | Chatbot                             |
-|------------------------------------------|------------------------------------------|--------------------------------------|
-| ![Hero](./public/screenshot-hero.png)    | ![Projects](./public/screenshot-projects.png) | ![Chatbot](./public/screenshot-chatbot.png) |
-
----
-
 ## 📄 Resume
 
-Your resume (`resume.pdf`) is stored in the `/public` and `/build` directories to ensure accessibility and download compatibility in production.
+My resume (`resume.pdf`) is stored in the `/public` and `/build` directories to ensure accessibility and download compatibility in production.
 
 Users can download it via:
 
@@ -137,4 +129,3 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ---
 
-```
