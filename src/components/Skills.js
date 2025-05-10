@@ -5,15 +5,16 @@ import {
 } from 'react-icons/lu';
 
 import {
-  SiReact, SiJavascript, SiHtml5, SiCss3, SiTailwindcss, SiBootstrap,
+  SiReact, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiTailwindcss, SiBootstrap,
   SiNodedotjs, SiExpress, SiFlask, SiDjango, SiFastapi, SiPython,
   SiMongodb, SiPostgresql, SiMysql, SiSqlite,
-  SiGit, SiWordpress
+  SiGit, SiGithub, SiFigma, SiWordpress
 } from 'react-icons/si';
 
 const iconMap = {
   'React': <SiReact className="w-4 h-4 text-cyan-500" />,
   'JavaScript': <SiJavascript className="w-4 h-4 text-yellow-500" />,
+  'TypeScript': <SiTypescript className="w-4 h-4 text-blue-500" />,
   'HTML': <SiHtml5 className="w-4 h-4 text-orange-500" />,
   'CSS': <SiCss3 className="w-4 h-4 text-blue-500" />,
   'Tailwind CSS': <SiTailwindcss className="w-4 h-4 text-teal-500" />,
@@ -23,13 +24,15 @@ const iconMap = {
   'Flask': <SiFlask className="w-4 h-4 text-gray-700" />,
   'Django': <SiDjango className="w-4 h-4 text-green-700" />,
   'FastAPI': <SiFastapi className="w-4 h-4 text-emerald-700" />,
-  'Bottle': <SiFlask className="w-4 h-4 text-gray-500" />, // fallback to Flask
+  'Bottle': <SiFlask className="w-4 h-4 text-gray-500" />, 
   'Python': <SiPython className="w-4 h-4 text-blue-600" />,
   'MongoDB': <SiMongodb className="w-4 h-4 text-green-700" />,
   'PostgreSQL': <SiPostgresql className="w-4 h-4 text-blue-600" />,
   'MySQL': <SiMysql className="w-4 h-4 text-sky-600" />,
   'SQLite': <SiSqlite className="w-4 h-4 text-gray-600" />,
   'Git': <SiGit className="w-4 h-4 text-red-500" />,
+  'GitHub': <SiGithub className="w-4 h-4 text-gray-600" />,
+  'Figma': <SiFigma className="w-4 h-4 text-pink-600" />,
   'REST API': <LuCloud className="w-4 h-4 text-cyan-600" />,
   'WordPress': <SiWordpress className="w-4 h-4 text-blue-700" />,
 };
@@ -38,12 +41,12 @@ const skillData = [
   {
     category: 'Frontend',
     icon: <LuCode className="w-5 h-5 text-indigo-500" />,
-    skills: ['React', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS', 'Bootstrap'],
+    skills: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS', 'Tailwind CSS', 'Bootstrap'],
   },
   {
     category: 'Backend',
     icon: <LuServer className="w-5 h-5 text-indigo-500" />,
-    skills: ['Node.js', 'Express', 'Flask', 'Django', 'FastAPI', 'Bottle', 'Python'],
+    skills: ['Python', 'Flask', 'Node.js', 'Express', 'Django', 'FastAPI', 'Bottle' ],
   },
   {
     category: 'Databases',
@@ -53,7 +56,7 @@ const skillData = [
   {
     category: 'Tools & Others',
     icon: <LuWrench className="w-5 h-5 text-indigo-500" />,
-    skills: ['Git', 'REST API', 'WordPress'],
+    skills: ['Git', 'GitHub', 'Figma', 'REST API', 'WordPress'],
   },
 ];
 
