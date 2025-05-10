@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Bot, Send, User, X } from 'lucide-react';
+import {
+  Bot, Send, User, X, Folder,
+  Code,
+  Send as SendIcon,
+  User as UserIcon,
+  Github as GithubIcon,
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Chatbot = () => {
@@ -24,20 +30,33 @@ const Chatbot = () => {
   const getResponse = (message) => {
     const text = message.toLowerCase();
 
+    // Greet the user
     if (text.includes('hi') || text.includes('hello')) {
-      return `👋 Hi! I'm Benjamin's assistant. Ask me about ${topics.join(', ')}.`;
-    } else if (text.includes('projects')) {
-      return `💼 Here are my projects:\n• Becof Web App\n• Reading Tracker CLI\n• Eco Home Guide\n• Textile Waste Recycling\n• Turkana Youth Hub`;
-    } else if (text.includes('skills')) {
-      return '🧠 I specialize in React, Node.js, Flask, Tailwind CSS, PostgreSQL, and MongoDB.';
-    } else if (text.includes('contact')) {
-      return '📬 You can reach me via email (b3njaminbaya@gmail.com) or WhatsApp (+254783797132).';
-    } else if (text.includes('about')) {
-      return "👨‍💻 I'm a full-stack developer trained at Moringa School, passionate about building impactful software.";
-    } else if (text.includes('github')) {
-      return '📂 Visit my GitHub: https://github.com/benjaminmweribaya';
+      return `👋 Hi there! I'm Benjamin's assistant. Ask me about projects, skills, contact info, or how to get started.`;
+
+      // Skills response updated
+    } else if (text.includes('skills') || text.includes('technologies') || text.includes('tech stack')) {
+      return `🛠️ Benjamin works with:\n\nFrontend: React, TypeScript, Tailwind, Bootstrap\nBackend: Flask, Django, Node.js, FastAPI, Python\nDatabases: PostgreSQL, MongoDB, MySQL\nOthers: Git, GitHub, REST APIs, WordPress, Figma`;
+
+      // Projects response updated
+    } else if (text.includes('project')) {
+      return `💼 Recent projects include:\n\n• Task Management System (React + Flask)\n• Micro-Donation App (M-Pesa API + PostgreSQL)\n• E-Commerce Platform for Becof Chemicals\n• Turkana Tech Youth Hub\n• Eco Home Guide\n• Movie Character Explorer (JS SPA)\n• CLI Reading Tracker`;
+
+      // Contact info
+    } else if (text.includes('contact') || text.includes('reach')) {
+      return `📬 You can contact Benjamin via:\nEmail: b3njaminbaya@gmail.com\nWhatsApp: +254 783 797132\nOr use the Contact Me form on this site.`;
+
+      // About info
+    } else if (text.includes('about') || text.includes('you')) {
+      return `👨‍💻 Benjamin Mweri Baya is a Full-Stack Software Developer with an engineering background. He’s the Founder of Tevexa Technologies and loves building impactful web apps.`;
+
+      // GitHub profile
+    } else if (text.includes('github') || text.includes('code')) {
+      return `📂 Explore Benjamin's code on GitHub:\nhttps://github.com/benjaminmweribaya`;
+
+      // Unexpected input fallback
     } else {
-      return "🤖 Sorry, I didn’t understand that. Try asking about projects, skills, contact, or GitHub.";
+      return `🤖 I'm not sure how to answer that. Try asking about "skills", "projects", "contact", or "GitHub".`;
     }
   };
 
@@ -72,6 +91,16 @@ const Chatbot = () => {
   const handleDragEnd = () => setIsDragging(false);
 
   const toggleChat = () => setShowChat(!showChat);
+
+  const handleQuickReply = (label) => {
+    setMessages((prev) => [...prev, { user: true, text: label }]);
+    setIsTyping(true);
+    setTimeout(() => {
+      const botReply = getResponse(label);
+      setMessages((prev) => [...prev, { user: false, text: botReply }]);
+      setIsTyping(false);
+    }, 1200);
+  };
 
   return (
     <>
@@ -146,6 +175,47 @@ const Chatbot = () => {
                 </div>
               )}
             </div>
+
+            {/* 👇 Quick Reply Buttons with Icons */}
+            {!isTyping && (
+              <div className="px-3 pb-2 flex flex-wrap gap-2">
+                <button
+                  onClick={() => handleQuickReply('Show me your projects')}
+                  className="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full hover:bg-indigo-200 transition flex items-center gap-1"
+                >
+                  <Folder size={12} />
+                  Projects
+                </button>
+                <button
+                  onClick={() => handleQuickReply('What are your skills?')}
+                  className="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full hover:bg-indigo-200 transition flex items-center gap-1"
+                >
+                  <Code size={12} />
+                  Skills
+                </button>
+                <button
+                  onClick={() => handleQuickReply('How can I contact you?')}
+                  className="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full hover:bg-indigo-200 transition flex items-center gap-1"
+                >
+                  <SendIcon size={12} />
+                  Contact
+                </button>
+                <button
+                  onClick={() => handleQuickReply('Tell me about you')}
+                  className="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full hover:bg-indigo-200 transition flex items-center gap-1"
+                >
+                  <UserIcon size={12} />
+                  About
+                </button>
+                <button
+                  onClick={() => handleQuickReply('GitHub link')}
+                  className="text-xs bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full hover:bg-indigo-200 transition flex items-center gap-1"
+                >
+                  <GithubIcon size={12} />
+                  GitHub
+                </button>
+              </div>
+            )}
 
             {/* Input */}
             <div className="border-t p-3 flex items-center gap-2">
