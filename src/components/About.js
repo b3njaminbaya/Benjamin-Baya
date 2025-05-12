@@ -5,7 +5,7 @@ import profile from '../assets/profile.png';
 
 const paragraphData = [
   "I'm Benjamin Mweri Baya, a Full-Stack Software Developer with a strong engineering background and a deep passion for building scalable, cloud-ready web applications.",
-  "With a Bachelor of Engineering in Chemical Engineering from the Technical University of Kenya and a professional certification in Full-Stack Web Development from Moringa School, I bridge logic and creativity to craft impactful digital experiences that solve real-world challenges.",
+  "With a Bachelor of Engineering in Chemical Engineering from the Technical University of Kenya and a professional certification in Full-Stack Website Development from Moringa School, I bridge logic and creativity to craft impactful digital experiences that solve real-world challenges.",
   "I'm the Founder and CEO of Tevexa Technologies Limited — a software company specializing in the development and management of modern websites and mobile applications. Read more about our work at www.tevexa.com.",
   "Whether I’m designing sleek user interfaces with React and Tailwind CSS or building robust backends with Flask and Node.js, I focus on clean code, collaborative development, and delivering smart, sustainable tech solutions. I’m especially passionate about innovation in climate tech, community impact, and responsible software engineering.",
 ];

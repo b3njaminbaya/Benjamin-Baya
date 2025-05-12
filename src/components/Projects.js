@@ -11,7 +11,7 @@ const projects = [
     liveDemo: "https://taskly-app-iota.vercel.app",
   },
   {
-    title: "Micro Donation App",
+    title: "Micro-Donations Platform",
     description: "A Flask-React Web Application that enables users to make small, impactful donations to support various causes like education, healthcare, and environmental initiatives.",
     tech: ["React", "Flask", "Tailwind CSS", "PostgreSQL", "WebSocket", "M-pesa API", "Payment Gateway"],
     github: "https://github.com/benjaminmweribaya/Micro-Donation-Platform",
