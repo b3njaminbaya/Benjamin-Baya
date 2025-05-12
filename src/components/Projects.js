@@ -18,7 +18,7 @@ const projects = [
     liveDemo: "https://micro-donation-platform.vercel.app",
   },
   {
-    title: "E-Commerce and Consulting Platform",
+    title: "E-Commerce & Consulting App",
     description: "A full-stack e-commerce and consulting platform that allows Becof Organic Chemicals to sell their products, as well as allow users to seek expert advice on various agricultural topics.",
     tech: ["React", "Tailwind", "Flask", "PostgreSQL", "Node.js", "M-pesa API", "Payment Gateway"],
     github: "https://github.com/benjaminmweribaya/becof-organic-chemicals",
