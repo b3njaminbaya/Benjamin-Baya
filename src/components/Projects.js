@@ -14,8 +14,8 @@ const projects = [
     title: "Micro-Donations Platform",
     description: "A Flask-React Web Application that enables users to make small, impactful donations to support various causes like education, healthcare, and environmental initiatives.",
     tech: ["React", "Flask", "Tailwind CSS", "PostgreSQL", "WebSocket", "M-pesa API", "Payment Gateway"],
-    github: "https://github.com/benjaminmweribaya/Micro-Donation-Platform",
-    liveDemo: "https://micro-donation-platform.vercel.app",
+    github: "https://github.com/benjaminmweribaya/Micro-Donations-Platform",
+    liveDemo: "https://micro-donations-platform.vercel.app",
   },
   {
     title: "E-Commerce & Consulting App",
