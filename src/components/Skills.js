@@ -24,7 +24,6 @@ const iconMap = {
   'Flask': <SiFlask className="w-4 h-4 text-gray-700" />,
   'Django': <SiDjango className="w-4 h-4 text-green-700" />,
   'FastAPI': <SiFastapi className="w-4 h-4 text-emerald-700" />,
-  'Bottle': <SiFlask className="w-4 h-4 text-gray-500" />, 
   'Python': <SiPython className="w-4 h-4 text-blue-600" />,
   'MongoDB': <SiMongodb className="w-4 h-4 text-green-700" />,
   'PostgreSQL': <SiPostgresql className="w-4 h-4 text-blue-600" />,
@@ -46,7 +45,7 @@ const skillData = [
   {
     category: 'Backend',
     icon: <LuServer className="w-5 h-5 text-indigo-500" />,
-    skills: ['Python', 'Flask', 'Node.js', 'Express', 'Django', 'FastAPI', 'Bottle' ],
+    skills: ['Python', 'Flask', 'Node.js', 'Express', 'Django', 'FastAPI', 'REST API' ],
   },
   {
     category: 'Databases',
@@ -54,9 +53,9 @@ const skillData = [
     skills: ['MongoDB', 'PostgreSQL', 'MySQL', 'SQLite'],
   },
   {
-    category: 'Tools & Others',
+    category: 'Tools',
     icon: <LuWrench className="w-5 h-5 text-indigo-500" />,
-    skills: ['Git', 'GitHub', 'Figma', 'REST API', 'WordPress'],
+    skills: ['Git', 'GitHub', 'Figma', 'WordPress'],
   },
 ];
 
@@ -71,7 +70,7 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          Tech Stack & Skills
+          Tech Stack
         </motion.h2>
 
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
