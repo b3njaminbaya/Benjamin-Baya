@@ -45,7 +45,7 @@ const About = () => {
           {paragraphData.map((text, index) => (
             <motion.div
               key={index}
-              className="bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-md flex items-start gap-4"
+              className=" bg-indigo-50 hover:bg-indigo-100 transition-colors border border-indigo-200 rounded-xl p-6 shadow-md flex items-start gap-4"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
