@@ -34,11 +34,11 @@ const Chatbot = () => {
 
       // Skills response updated
     } else if (text.includes('skills') || text.includes('technologies') || text.includes('tech stack')) {
-      return `🛠️ Benjamin works with:\n\nFrontend: React, TypeScript, Tailwind, Bootstrap\nBackend: Flask, Django, Node.js, FastAPI, Python\nDatabases: PostgreSQL, MongoDB, MySQL\nOthers: Git, GitHub, REST APIs, WordPress, Figma`;
+      return `🛠️ Benjamin works with:\n\nFrontend: React, JavaScript, TypeScript, Tailwind, Bootstrap, HTML, CSS\nBackend: Flask, Django, Node.js, FastAPI, Python, RestAPI, Express\nDatabases: PostgreSQL, MongoDB, MySQL, SQLite\nTools: Git, GitHub, WordPress, Figma`;
 
       // Projects response updated
     } else if (text.includes('project')) {
-      return `💼 Recent projects include:\n\n• Task Management System (React + Flask)\n• Micro-Donation App (M-Pesa API + PostgreSQL)\n• E-Commerce Platform for Becof Chemicals\n• Turkana Tech Youth Hub\n• Eco Home Guide\n• Movie Character Explorer (JS SPA)\n• CLI Reading Tracker`;
+      return `💼 Recent projects include:\n\n• Task Management System (React + Flask)\n• Micro-Donations Platform (M-Pesa API + PostgreSQL)\n• E-Commerce Platform for Becof Chemicals\n• Turkana Tech Youth Hub\n• Eco Home Guide\n• Movie Character Explorer (JS SPA)\n• CLI Reading Tracker`;
 
       // Contact info
     } else if (text.includes('contact') || text.includes('reach')) {
