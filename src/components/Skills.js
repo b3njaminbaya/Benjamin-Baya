@@ -45,7 +45,7 @@ const skillData = [
   {
     category: 'Backend',
     icon: <LuServer className="w-5 h-5 text-indigo-500" />,
-    skills: ['Python', 'Flask', 'Node.js', 'Express', 'Django', 'FastAPI', 'REST API' ],
+    skills: ['Python', 'Flask', 'Node.js', 'Express', 'Django', 'FastAPI', 'REST API'],
   },
   {
     category: 'Databases',
@@ -74,30 +74,33 @@ const Skills = () => {
         </motion.h2>
 
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {skillData.map((block, idx) => (
-            <motion.div
-              key={block.category}
-              className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-indigo-500"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-2 mb-4">
-                {block.icon}
-                <h3 className="text-xl font-semibold text-gray-800">{block.category}</h3>
-              </div>
+          {skillData.map((block, idx) => {
+            const headingId = `skills-${block.category.toLowerCase()}`;
+            return (
+              <motion.div
+                key={block.category}
+                className="bg-white rounded-xl shadow-lg p-6 border-t-4 border-indigo-500"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: idx * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex items-center gap-2 mb-4">
+                  {block.icon}
+                  <h3 id={headingId} className="text-xl font-semibold text-gray-800">{block.category}</h3>
+                </div>
 
-              <ul className="grid grid-cols-1 gap-2 text-sm text-gray-700">
-                {block.skills.map((skill, i) => (
-                  <li key={i} className="flex items-center gap-2 hover:text-indigo-500 transition-all">
-                    {iconMap[skill] || <LuChevronRight className="text-indigo-400 w-4 h-4" />}
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+                <ul className="grid grid-cols-1 gap-2 text-sm text-gray-700" aria-labelledby={headingId}>
+                  {block.skills.map((skill) => (
+                    <li key={skill} className="flex items-center gap-2 hover:text-indigo-500 transition-all">
+                      {iconMap[skill] || <LuChevronRight className="text-indigo-400 w-4 h-4" />}
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
