@@ -161,7 +161,7 @@ const Projects = () => {
               <img
                 src={project.image}
                 alt={`${project.title} Screenshot`}
-                className="w-full h-40 object-cover rounded-lg mb-4 border border-gray-200 dark:border-gray-700"
+                className="w-full h-40 object-contain rounded-lg mb-4 border border-gray-200 dark:border-gray-700"
               />
               <span className="uppercase text-xs bg-green-100 text-green-600 px-2 py-1 rounded mb-2 inline-block">
                 {project.type}
@@ -214,7 +214,7 @@ const Projects = () => {
               <img
                 src={selectedProject.image}
                 alt={`${selectedProject.title} Screenshot`}
-                className="w-full h-64 object-cover rounded mb-4"
+                className="w-full h-64 object-contain rounded mb-4"
               />
               <span className="uppercase text-xs bg-green-100 text-green-600 px-2 py-1 rounded mb-2 inline-block">
                 {selectedProject.type}
