@@ -144,6 +144,7 @@ const Projects = () => {
             <motion.div
               key={index}
               onClick={() => setSelectedProject(project)}
+              aria-describedby={`project-hint-${index}`}
               className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-indigo-500 hover:shadow-2xl transition-all duration-300 rounded-xl p-6 cursor-pointer relative overflow-hidden "
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -176,6 +177,12 @@ const Projects = () => {
                   </span>
                 ))}
               </div>
+              <p
+                id={`project-hint-${index}`}
+                className="text-xs text-indigo-400 mt-3 italic"
+              >
+                Click to view more
+              </p>
             </motion.div>
           ))}
         </div>
