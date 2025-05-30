@@ -35,15 +35,15 @@ const About = () => {
         >
           <img
             src={profile}
-            alt="Benjamin Mweri Baya"
+            alt="Portrait of Benjamin Mweri Baya – Full-Stack Software Developer"
             className="rounded-full w-40 h-40 object-contain border-4 border-indigo-500 shadow-xl"
           />
         </motion.div>
 
         {/* Paragraph Cards */}
-        <div className="grid gap-6 text-left">
+        <ul className="grid gap-6 text-left list-none">
           {paragraphData.map((text, index) => (
-            <motion.div
+            <motion.li
               key={index}
               className=" bg-indigo-50 hover:bg-indigo-100 transition-colors border border-indigo-200 rounded-xl p-6 shadow-md flex items-start gap-4"
               initial={{ opacity: 0, y: 30 }}
@@ -57,7 +57,7 @@ const About = () => {
                   <>
                     I'm the <span className="font-semibold">Founder and CEO of{' '}
                       <a
-                        href="https://www.tevexa.com"
+                        href="https://www.tevexatechnologies.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-indigo-600 hover:underline"
@@ -65,21 +65,21 @@ const About = () => {
                         Tevexa Technologies Limited
                       </a></span> — a software company specializing in the development and management of modern websites and mobile applications. Read more about our work at{' '}
                     <a
-                      href="https://www.tevexa.com"
+                      href="https://www.tevexatechnologies.com"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-indigo-600 hover:underline"
                     >
-                      www.tevexa.com
+                      www.tevexatechnologies.com
                     </a>.
                   </>
                 ) : (
                   text
                 )}
               </p>
-            </motion.div>
+            </motion.li>
           ))}
-        </div>
+        </ul>
 
         {/* Quote */}
         <motion.p
