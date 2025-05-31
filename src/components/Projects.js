@@ -65,12 +65,12 @@ const projects = [
   },
   {
     title: "Eco Home Guide",
-    type: "Front-End",
+    type: "Full-Stack",
     description: "A user-friendly guide to eco-friendly home improvements.",
     tech: ["React", "Chart.js", "Vercel"],
     image: "/eco-home-guide.png",
-    github: "https://github.com/benjaminmweribaya/eco-home-guide-app",
-    liveDemo: "https://eco-home-guide-app.vercel.app",
+    github: "https://github.com/benjaminmweribaya/eco-home-guide",
+    liveDemo: "https://eco-home-guide.vercel.app",
     featured: false,
     details: [
       "Visual representation of energy savings with Chart.js",
