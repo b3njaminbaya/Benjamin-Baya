@@ -1,10 +1,8 @@
-import { Html } from '@react-three/drei';
-import * as THREE from 'three';
 import { useState, useEffect, Suspense, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import {
-  ArrowRight, Mail, Menu, X, User, Code, Folder, Send, FileText
+  ArrowRight, Mail, Menu, X, User, Code, FileText, Folder
 } from 'lucide-react';
 import { Link } from 'react-scroll';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
@@ -15,24 +13,18 @@ const ResponsiveShapes = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(size.width < 768); 
-    };
-
-    handleResize(); 
+    const handleResize = () => setIsMobile(size.width < 768);
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, [size.width]);
 
   return (
-    <>
-      <group position={isMobile ? [0, 1.5, 0] : [-2.5, 0, 0]}>
-        <FloatingCube />
-      </group>
-    </>
+    <group position={isMobile ? [0, 1.5, 0] : [-2.5, 0, 0]}>
+      <FloatingCube />
+    </group>
   );
 };
-
 
 const FloatingCube = () => {
   const cubeRef = useRef();
@@ -57,30 +49,13 @@ const FloatingCube = () => {
   );
 };
 
-const RotatingTorus = () => {
-  const torusRef = useRef();
-  useFrame(({ clock }) => {
-    const a = clock.getElapsedTime();
-    torusRef.current.rotation.x = a * 0.6;
-    torusRef.current.rotation.y = a * 0.3;
-    torusRef.current.position.y = Math.cos(a) * 0.5;
-  });
-
-  return (
-    <mesh ref={torusRef} position={[2, 0, 0]} scale={[2, 2, 2]}>
-      <torusGeometry args={[0.8, 0.3, 16, 100]} />
-      <meshStandardMaterial color={'#facc15'} metalness={0.5} roughness={0.3} />
-    </mesh>
-  );
-};
-
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
     <header className="relative bg-gray-900 text-white min-h-screen flex flex-col justify-between overflow-hidden">
-      {/* 3D Canvas Background */}
+      {/* 3D Canvas */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Canvas camera={{ position: [0, 0, 8] }}>
           <ambientLight intensity={0.5} />
@@ -95,7 +70,9 @@ const Header = () => {
 
       {/* Navbar */}
       <div className="container mx-auto px-4 py-4 flex justify-between items-center z-50 relative">
-        <h1 className="text-xl font-bold">Benjamin Mweri Baya</h1>
+        <h1 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-pink-400 to-yellow-400">
+          Benjamin Mweri Baya
+        </h1>
         <button className="block md:hidden text-white focus:outline-none" onClick={toggleMenu}>
           <Menu size={24} />
         </button>
@@ -106,8 +83,14 @@ const Header = () => {
           <Link to="skills" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
             <Code size={16} /> Skills
           </Link>
+          <Link to="projects" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+            <Folder size={16} /> Projects
+          </Link>
+          <Link to="contact" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+            <Mail size={16} /> Contact Me
+          </Link>
           <Link to="footer" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
-            <Send size={16} /> Connect
+            <ArrowRight size={16} /> Connect
           </Link>
         </nav>
       </div>
@@ -125,7 +108,9 @@ const Header = () => {
               <ul className="space-y-4 text-base">
                 <li><Link to="about" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><User size={18} /> About</Link></li>
                 <li><Link to="skills" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Code size={18} /> Skills</Link></li>
-                <li><Link to="footer" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Send size={18} /> Connect</Link></li>
+                <li><Link to="projects" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Folder size={18} /> Projects</Link></li>
+                <li><Link to="contact" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Mail size={18} /> Contact Me</Link></li>
+                <li><Link to="footer" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><ArrowRight size={18} /> Connect</Link></li>
               </ul>
             </motion.div>
           </>
@@ -138,7 +123,7 @@ const Header = () => {
           👋 Welcome to my portfolio
         </motion.div>
         <motion.h2 className="text-4xl md:text-6xl font-extrabold mb-4" animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 4 }}>
-          Hello, I’m <span className="text-indigo-400">Benjamin</span>
+          Hello, I’m <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-pink-400 to-yellow-400">Benjamin</span>
         </motion.h2>
         <h3 className="text-xl md:text-3xl font-medium text-gray-400 mb-6">
           <Typewriter options={{

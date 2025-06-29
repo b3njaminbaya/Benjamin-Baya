@@ -1,9 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Html, Stars, Float, Text } from '@react-three/drei';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
-import * as THREE from 'three';
 
 // 🔷 Floating glowing spheres around the cube
 const FloatingSpheres = () => {
@@ -11,7 +10,9 @@ const FloatingSpheres = () => {
 
     useFrame(({ clock }) => {
         const t = clock.getElapsedTime();
-        groupRef.current.rotation.y = t * 0.2;
+        if (groupRef.current) {
+            groupRef.current.rotation.y = t * 0.2;
+        }
     });
 
     return (
@@ -74,8 +75,8 @@ const InteractiveCube = () => {
             position: [0.76, 0, 0],
             rotation: [0, Math.PI / 2, 0],
             label: 'Resume',
-            external: true,
             to: '/resume.pdf',
+            external: true,
             faceIndex: 2,
         },
         {
@@ -107,22 +108,17 @@ const InteractiveCube = () => {
                     <motion.div
                         onHoverStart={() => handlePointerEnter(faceIndex)}
                         onHoverEnd={handlePointerLeave}
-                        onClick={() => handlePointerEnter(faceIndex)}
                         whileHover={{ scale: 1.15 }}
                         whileTap={{ scale: 0.95 }}
                         className={`block px-4 py-2 text-sm rounded shadow-md transition-all duration-200 ease-out 
-                            ${hoveredFace === faceIndex ? 'ring-2 ring-yellow-400 scale-105' : ''} 
-                            ${external ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'}
-                        `}
+              ${hoveredFace === faceIndex ? 'ring-2 ring-yellow-400 scale-105' : ''} 
+              ${external ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'}
+            `}
                     >
                         {external ? (
-                            <a href={to} target="_blank" rel="noopener noreferrer">
-                                {label}
-                            </a>
+                            <a href={to} target="_blank" rel="noopener noreferrer">{label}</a>
                         ) : (
-                            <Link to={to} smooth duration={500}>
-                                {label}
-                            </Link>
+                            <Link to={to} smooth duration={500}>{label}</Link>
                         )}
                     </motion.div>
                 </Html>
@@ -130,7 +126,6 @@ const InteractiveCube = () => {
         </group>
     );
 };
-
 
 // 🟣 Floating text elements
 const FloatingText = () => (
@@ -186,4 +181,5 @@ const InteractiveShowcase = () => {
 };
 
 export default InteractiveShowcase;
+
 
