@@ -7,10 +7,8 @@ const Contact = () => {
   const [fileError, setFileError] = useState(null);
 
   const handleMessageChange = (e) => {
-    const words = e.target.value.trim().split(/\s+/).length;
-    if (words <= 800) {
-      setWordCount(words);
-    }
+    const words = e.target.value.trim().split(/\s+/).filter(Boolean).length; // ✅ Always count words
+    setWordCount(words); // ✅ Update count regardless of limit
   };
 
   const handleFileChange = (e) => {
@@ -32,69 +30,82 @@ const Contact = () => {
           Contact Me
         </motion.h2>
 
-        <form
-          action="https://formsubmit.co/b3njaminbaya@gmail.com"
-          method="POST"
-          encType="multipart/form-data"
-          className="bg-white shadow-md rounded-lg p-8"
-        >
-          {/* Anti-bot hidden input */}
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_template" value="box" />
-          <input type="hidden" name="_next" value="https://benjamin-mweri-baya.vercel.app/thanks" />
+        <div className="p-1 rounded-lg bg-gradient-to-r from-pink-500 via-yellow-500 to-indigo-500">
+          <form
+            action="https://formsubmit.co/b3njaminbaya@gmail.com"
+            method="POST"
+            encType="multipart/form-data"
+            className="bg-white shadow-md rounded-lg p-8"
+          >
+            {/* Anti-bot hidden input */}
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="box" />
+            <input type="hidden" name="_next" value="https://benjamin-mweri-baya.vercel.app/thanks" />
 
-          <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Name</label>
-            <input
-              type="text"
-              name="name"
-              required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-400"
-            />
-          </div>
+            <div className="mb-4">
+              <label className="block text-sm font-semibold mb-1">Name</label>
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Benjamin Baya" 
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-400"
+              />
+            </div>
 
-          <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              required
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-400"
-            />
-          </div>
+            <div className="mb-4">
+              <label className="block text-sm font-semibold mb-1">Email</label>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="you@example.com" 
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-400"
+              />
+            </div>
 
-          <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Message</label>
-            <textarea
-              name="message"
-              required
-              rows="5"
-              onChange={handleMessageChange}
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-400"
-            ></textarea>
-            <p className="text-sm text-gray-500 mt-1">{`Word count: ${wordCount}/800`}</p>
-          </div>
+            <div className="mb-4">
+              <label className="block text-sm font-semibold mb-1">Message</label>
+              <textarea
+                name="message"
+                required
+                rows="5"
+                placeholder="Your message here..." 
+                onChange={handleMessageChange}
+                className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-indigo-400"
+              ></textarea>
+              <p className="text-sm text-gray-500 mt-1">{`Word count: ${wordCount}/800`}</p>
+              {/* ✅ Word count warning */}
+              {wordCount > 800 && (
+                <p className="text-red-500 text-sm mt-1">Message exceeds the 800-word limit.</p>
+              )}
+            </div>
 
-          <div className="mb-4">
-            <label className="block text-sm font-semibold mb-1">Attachments (Max 10MB each)</label>
-            <input
-              type="file"
-              name="attachment"
-              onChange={handleFileChange}
-              className="w-full border border-gray-300 rounded px-3 py-2"
-            />
-            {fileError && <p className="text-red-500 text-sm mt-1">{fileError}</p>}
-          </div>
+            <div className="mb-4">
+              <label className="block text-sm font-semibold mb-1">Attachments (Max 10MB each)</label>
+              <input
+                type="file"
+                name="attachment"
+                onChange={handleFileChange}
+                className="w-full border border-gray-300 rounded px-3 py-2"
+              />
+              {fileError && <p className="text-red-500 text-sm mt-1">{fileError}</p>}
+            </div>
 
-          <div className="text-center">
-            <button
-              type="submit"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded shadow"
-            >
-              Send Message
-            </button>
-          </div>
-        </form>
+            <div className="text-center">
+              <button
+                type="submit"
+                disabled={fileError || wordCount > 800} 
+                className={`font-semibold px-6 py-2 rounded shadow transition-colors ${fileError || wordCount > 800
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                  }`}
+              >
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
 
         {/* ✅ Add Client Intake Card Below */}
         <motion.div
@@ -127,4 +138,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
 

@@ -128,7 +128,7 @@ const Header = () => {
         <h3 className="text-xl md:text-3xl font-medium text-gray-400 mb-6">
           <Typewriter options={{
             strings: [
-              'Full-Stack Software Developer',
+              'Full-Stack Software Engineer',
               'Flask & React Specialist',
               'Cloud-Ready App Builder',
               'UI/UX Designer',

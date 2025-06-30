@@ -12,7 +12,7 @@ const quotes = [
 ];
 
 const paragraphData = [
-  "I'm Benjamin Mweri Baya, a Full-Stack Software Developer with a strong engineering background and a deep passion for building scalable, cloud-ready web applications.",
+  "I'm Benjamin Mweri Baya, a Full-Stack Software Engineer blending strong engineering principles with modern web technologies to build scalable, cloud-ready applications. My work bridges functionality and user experience, turning complex challenges into elegant digital solutions.",
   "With a Bachelor of Engineering in Chemical Engineering from the Technical University of Kenya and a professional certification in Full-Stack Website Development from Moringa School, I bridge logic and creativity to craft impactful digital experiences that solve real-world challenges.",
 ];
 
