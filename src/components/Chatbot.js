@@ -34,7 +34,7 @@ const Chatbot = () => {
 
       // Skills response updated
     } else if (text.includes('skills') || text.includes('technologies') || text.includes('tech stack')) {
-      return `🛠️ Benjamin works with:\n\nFrontend: React, JavaScript, TypeScript, Tailwind, Bootstrap, HTML, CSS\nBackend: Flask, Django, Node.js, FastAPI, Python, RestAPI, Express\nDatabases: PostgreSQL, MongoDB, MySQL, SQLite\nTools: Git, GitHub, WordPress, Figma`;
+      return `🛠️ Benjamin works with:\n\nFrontend: React, JavaScript, TypeScript, Tailwind, Bootstrap, HTML, CSS\nBackend: Flask, Django, Node.js, Python, Java, Spring Boot\nDatabases: PostgreSQL, MongoDB, MySQL, SQLite\nTools: Git, GitHub, Figma`;
 
       // Projects response updated
     } else if (text.includes('project')) {

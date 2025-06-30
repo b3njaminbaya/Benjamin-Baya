@@ -92,6 +92,9 @@ const Header = () => {
           <Link to="footer" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
             <ArrowRight size={16} /> Connect
           </Link>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-gray-400">
+            <FileText size={16} /> Resume
+          </a>
         </nav>
       </div>
 
@@ -111,6 +114,7 @@ const Header = () => {
                 <li><Link to="projects" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Folder size={18} /> Projects</Link></li>
                 <li><Link to="contact" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Mail size={18} /> Contact Me</Link></li>
                 <li><Link to="footer" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><ArrowRight size={18} /> Connect</Link></li>
+                <li><a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-indigo-400"><FileText size={18} /> Resume</a></li>
               </ul>
             </motion.div>
           </>
