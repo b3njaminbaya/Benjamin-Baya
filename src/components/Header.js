@@ -61,7 +61,7 @@ const Header = () => {
           <ambientLight intensity={0.5} />
           <directionalLight position={[2, 5, 5]} intensity={1.2} />
           <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-          <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade />
+          <Stars radius={100} depth={50} count={8000} factor={6} saturation={0} fade />
           <Suspense fallback={null}>
             <ResponsiveShapes />
           </Suspense>

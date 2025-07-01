@@ -1,198 +1,111 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Github, Linkedin, Twitter, Instagram, Facebook,
-  Youtube, MessageSquareText
-} from 'lucide-react';
-import { SiTelegram, SiTiktok } from 'react-icons/si';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Html, Stars, Float, Text } from '@react-three/drei';
+import { Github, Linkedin, Instagram, Facebook, Youtube } from 'lucide-react';
+import { SiTiktok } from 'react-icons/si';
+import { Canvas } from '@react-three/fiber';
+import { Stars } from '@react-three/drei';
 import { Link } from 'react-scroll';
 
-// 🔷 Floating glowing spheres around the cube
-const FloatingSpheres = () => {
-  const groupRef = useRef();
+const styles = `
+@keyframes neon-border {
+  0% { box-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6, 0 0 20px #8b5cf6; }
+  50% { box-shadow: 0 0 15px #8b5cf6, 0 0 30px #8b5cf6, 0 0 45px #8b5cf6; }
+  100% { box-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6, 0 0 20px #8b5cf6; }
+}
+@keyframes flip-flop {
+  0%, 100% { transform: rotateX(0deg); }
+  50% { transform: rotateX(30deg); }
+}
+.neon-flip {
+  animation: neon-border 2s infinite ease-in-out, flip-flop 3s infinite ease-in-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+`;
+if (typeof window !== 'undefined') {
+  const styleSheet = document.createElement("style");
+  styleSheet.innerText = styles;
+  document.head.appendChild(styleSheet);
+}
 
-  useFrame(({ clock }) => {
-    const t = clock.getElapsedTime();
-    if (groupRef.current) {
-      groupRef.current.rotation.y = t * 0.2;
-    }
-  });
-
+const AnimatedPanel = ({ label, to, external, index }) => {
   return (
-    <group ref={groupRef}>
-      {[...Array(6)].map((_, i) => {
-        const angle = (i / 6) * Math.PI * 2;
-        const x = Math.cos(angle) * 3;
-        const z = Math.sin(angle) * 3;
-        const y = Math.sin(angle * 1.5) * 1.5;
-
-        return (
-          <mesh key={i} position={[x, y, z]}>
-            <sphereGeometry args={[0.2, 32, 32]} />
-            <meshStandardMaterial color="#f59e0b" emissive="#facc15" emissiveIntensity={1} />
-          </mesh>
-        );
-      })}
-    </group>
+    <motion.div
+      initial={{ y: 150, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: index * 0.4, duration: 0.6, ease: 'easeOut' }}
+      className="w-full h-20 rounded-xl shadow-md cursor-pointer text-sm font-semibold
+                 relative overflow-hidden group transform transition-transform duration-300
+                 hover:scale-105 hover:shadow-xl neon-flip"
+    >
+      <div className="absolute inset-0 border-2 border-indigo-500 rounded-xl z-0"></div>
+      {external ? (
+        <a
+          href={to}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative z-10 w-full h-full flex items-center justify-center text-white"
+        >
+          {label}
+        </a>
+      ) : (
+        <Link
+          to={to}
+          smooth
+          duration={500}
+          className="relative z-10 w-full h-full flex items-center justify-center text-white"
+        >
+          {label}
+        </Link>
+      )}
+    </motion.div>
   );
 };
 
-const InteractiveCube = () => {
-  const cubeRef = useRef();
-  const [hoveredFace, setHoveredFace] = useState(null);
-  const [rotationPaused, setRotationPaused] = useState(false);
-
-  useFrame(() => {
-    if (!rotationPaused && cubeRef.current) {
-      cubeRef.current.rotation.x += 0.01;
-      cubeRef.current.rotation.y += 0.01;
-    }
-  });
-
-  const handlePointerEnter = (face) => {
-    setHoveredFace(face);
-    setRotationPaused(true);
-  };
-
-  const handlePointerLeave = () => {
-    setHoveredFace(null);
-    setRotationPaused(false);
-  };
-
-  const faceLinks = [
-    {
-      position: [0, 0, 0.76],
-      rotation: [0, 0, 0],
-      label: 'Projects',
-      to: 'projects',
-      faceIndex: 0,
-    },
-    {
-      position: [0, 0, -0.76],
-      rotation: [0, Math.PI, 0],
-      label: 'Contact Me',
-      to: 'contact',
-      faceIndex: 1,
-    },
-    {
-      position: [0.76, 0, 0],
-      rotation: [0, Math.PI / 2, 0],
-      label: 'Resume',
-      to: '/resume.pdf',
-      external: true,
-      faceIndex: 2,
-    },
-    {
-      position: [-0.76, 0, 0],
-      rotation: [0, -Math.PI / 2, 0],
-      label: 'Skills',
-      to: 'skills',
-      faceIndex: 3,
-    },
+const InteractiveShowcase = () => {
+  const panels = [
+    { label: 'Projects', to: 'projects' },
+    { label: 'Contact Me', to: 'contact' },
+    { label: 'Resume', to: '/resume.pdf', external: true },
+    { label: 'Skills', to: 'skills' },
   ];
 
   return (
-    <group ref={cubeRef} scale={[2.5, 2.5, 2.5]}>
-      <boxGeometry args={[1.5, 1.5, 1.5]} />
-      {[...Array(6)].map((_, i) => (
-        <meshStandardMaterial
-          key={i}
-          attach={`material-${i}`}
-          color="#6366f1"
-          metalness={0.7}
-          roughness={0.1}
-          emissive="#4f46e5"
-          emissiveIntensity={0.6}
-        />
-      ))}
+    <motion.section
+      className="w-full h-[300px] sm:h-[400px] md:h-[400px] bg-gray-900 text-white flex flex-col items-center justify-end relative overflow-hidden"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: 1 }}
+    >
+      {/* 🌌 Star background */}
+      <Canvas camera={{ position: [0, 0, 6], fov: 60 }}>
+        <Stars radius={100} depth={80} count={8000} factor={6} saturation={0} fade speed={2} />
+      </Canvas>
 
-      {faceLinks.map(({ position, rotation, label, to, external, faceIndex }, i) => (
-        <Html key={i} position={position} rotation={rotation} transform occlude>
-          <motion.div
-            onHoverStart={() => handlePointerEnter(faceIndex)}
-            onHoverEnd={handlePointerLeave}
-            whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 0.95 }}
-            className={`block px-4 py-2 text-sm rounded shadow-md transition-all duration-200 ease-out 
-              ${hoveredFace === faceIndex ? 'ring-2 ring-yellow-400 scale-105' : ''} 
-              ${external ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-900'}
-            `}
-          >
-            {external ? (
-              <a href={to} target="_blank" rel="noopener noreferrer">{label}</a>
-            ) : (
-              <Link to={to} smooth duration={500}>{label}</Link>
-            )}
-          </motion.div>
-        </Html>
-      ))}
-    </group>
+      {/* 📦 Panels */}
+      <div className="absolute bottom-10 px-6 w-full max-w-5xl grid grid-cols-2 sm:grid-cols-4 gap-4 perspective-[800px]">
+        {panels.map((panel, index) => (
+          <AnimatedPanel
+            key={index}
+            label={panel.label}
+            to={panel.to}
+            external={panel.external}
+            index={index}
+          />
+        ))}
+      </div>
+    </motion.section>
   );
 };
 
-const FloatingText = () => (
-  <>
-    <Float speed={2} rotationIntensity={0.5} floatIntensity={2}>
-      <Text
-        position={[2, 1.5, -1]}
-        fontSize={0.6}
-        color="white"
-        anchorX="center"
-        anchorY="middle"
-      >
-        Explore
-      </Text>
-    </Float>
-    <Float speed={1.5} rotationIntensity={1} floatIntensity={1.5}>
-      <Text
-        position={[-2, -1.2, -1]}
-        fontSize={0.5}
-        color="#facc15"
-        anchorX="center"
-        anchorY="middle"
-      >
-        React • Three.js • R3F
-      </Text>
-    </Float>
-  </>
-);
-
-const InteractiveShowcase = () => (
-  <motion.section
-    className="w-full h-[600px] bg-gray-900 text-white flex flex-col items-center justify-center"
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.4 }}
-    transition={{ duration: 1 }}
-  >
-    <Canvas camera={{ position: [0, 0, 6], fov: 60 }}>
-      <ambientLight intensity={0.3} />
-      <directionalLight position={[5, 5, 5]} intensity={1} />
-      <OrbitControls enableZoom={false} enablePan={false} />
-      <Stars radius={100} depth={80} count={8000} factor={6} saturation={0} fade speed={2} />
-      <InteractiveCube />
-      <FloatingSpheres />
-      <FloatingText />
-    </Canvas>
-    <p className="text-center mt-4 text-white text-sm px-4 max-w-7xl">
-      Click the cube to explore my work. This 3D section is powered by <strong>React Three Fiber</strong>, <strong>Drei</strong>, and a passion for great interfaces 🚀.
-    </p>
-  </motion.section>
-);
-
-// 📦 Social footer section
 const socialLinks = [
   { href: 'https://github.com/benjaminmweribaya', icon: <Github size={18} />, label: 'GitHub' },
   { href: 'https://linkedin.com/in/benjamin-mweri-baya', icon: <Linkedin size={18} />, label: 'LinkedIn' },
-  { href: 'https://x.com/B3njaminBaya', icon: <Twitter size={18} />, label: 'X' },
   { href: 'https://instagram.com/benjaminmweribaya', icon: <Instagram size={18} />, label: 'Instagram' },
   { href: 'https://facebook.com/benjaminmweribaya', icon: <Facebook size={18} />, label: 'Facebook' },
-  { href: 'https://t.me/benjaminmweribaya', icon: <SiTelegram size={18} />, label: 'Telegram' },
   { href: 'https://www.tiktok.com/@benjaminmweribaya', icon: <SiTiktok size={18} />, label: 'TikTok' },
   { href: 'https://www.youtube.com/@benjaminmweribaya', icon: <Youtube size={18} />, label: 'YouTube' },
-  { href: 'https://wa.me/+254783797132', icon: <MessageSquareText size={18} />, label: 'WhatsApp' },
 ];
 
 const Footer = () => {
@@ -231,6 +144,8 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
 
 
 
