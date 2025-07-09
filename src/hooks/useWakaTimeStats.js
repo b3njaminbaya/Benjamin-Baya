@@ -14,7 +14,7 @@ export function useWakaTimeStats() {
         const fetchStats = async () => {
             setLoading(true);
             try {
-                const res = await axios.get('https://your-backend-url.com/api/wakatime-stats');
+                const res = await axios.get('https://portfolio-server-kbti.onrender.com/api/wakatime-stats');
                 const data = res.data.data;
 
                 if (!data || !data.languages) throw new Error("Invalid WakaTime response");

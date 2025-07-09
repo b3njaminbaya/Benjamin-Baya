@@ -14,7 +14,7 @@ export function useGitHubStats() {
         const fetchStats = async () => {
             setLoading(true);
             try {
-                const res = await axios.get('https://your-backend-url.com/api/github-stats');
+                const res = await axios.get('https://portfolio-server-kbti.onrender.com/api/github-stats');
                 const { commitsToday, repos, weeklyCommits } = res.data;
 
                 setStats({
