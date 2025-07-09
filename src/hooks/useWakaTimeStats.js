@@ -1,4 +1,3 @@
-this
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -25,7 +24,11 @@ export function useWakaTimeStats() {
                         name: lang.name,
                         hours: +(lang.total_seconds / 3600).toFixed(1),
                         percent: lang.percent
-                    }))
+                    })),
+                    daily: data.categories?.map(cat => ({
+                        date: cat.range.date, 
+                        hours: +(cat.total_seconds / 3600).toFixed(1)
+                    })) || []
                 });
             } catch (err) {
                 setError(err.message || 'WakaTime stats failed');
