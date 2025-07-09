@@ -86,7 +86,8 @@ app.get('/api/wakatime-stats', async (req, res) => {
         });
         res.json(response.data);
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        console.error('WakaTime error:', err?.response?.data || err.message || err); 
+        res.status(500).json({ error: err?.response?.data?.error || err.message || 'Unknown error' });
     }
 });
 
