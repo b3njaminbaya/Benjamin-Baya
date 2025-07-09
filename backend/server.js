@@ -11,7 +11,7 @@ app.get('/api/github-stats', async (req, res) => {
     try {
         const today = new Date();
         const startDate = new Date(today);
-        startDate.setDate(today.getDate() - 6); // Last 7 days
+        startDate.setDate(today.getDate() - 6);
 
         const formatDate = date => date.toISOString().split('T')[0];
 
@@ -56,7 +56,7 @@ app.get('/api/github-stats', async (req, res) => {
 
         const allDays = data.contributionsCollection.contributionCalendar.weeks
             .flatMap(week => week.contributionDays)
-            .slice(-7); // ensure last 7 days only
+            .slice(-7);
 
         const weeklyCommits = allDays.map(day => ({
             day: new Date(day.date).toLocaleDateString('en-US', { weekday: 'short' }),
