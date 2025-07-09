@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 export function useGitHubStats(username) {
     const [stats, setStats] = useState({

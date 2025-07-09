@@ -26,7 +26,7 @@ const Dashboard = () => {
         stats: wakaStats,
         loading: wakaLoading,
         error: wakaError
-    } = useWakaTimeStats(process.env.REACT_APP_WAKATIME_API_KEY);
+    } = useWakaTimeStats(process.env.WAKATIME_API_KEY);
 
     const loading = ghLoading || wakaLoading;
     const error = ghError || wakaError;
