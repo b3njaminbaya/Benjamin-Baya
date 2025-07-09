@@ -79,14 +79,17 @@ app.get('/api/github-stats', async (req, res) => {
 
 app.get('/api/wakatime-stats', async (req, res) => {
     try {
+        const auth = Buffer.from(`${process.env.WAKATIME_API_KEY}:`).toString('base64');
+
         const response = await axios.get('https://wakatime.com/api/v1/users/current/stats', {
             headers: {
-                Authorization: `Bearer ${process.env.WAKATIME_API_KEY}`,
+                Authorization: `Basic ${auth}`,
             },
         });
+
         res.json(response.data);
     } catch (err) {
-        console.error('WakaTime error:', err?.response?.data || err.message || err); 
+        console.error('WakaTime error:', err?.response?.data || err.message || err);
         res.status(500).json({ error: err?.response?.data?.error || err.message || 'Unknown error' });
     }
 });
