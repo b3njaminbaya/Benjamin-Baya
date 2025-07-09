@@ -1,4 +1,3 @@
-// src/components/Dashboard.js
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useGitHubStats } from '../hooks/useGitHubStats';
