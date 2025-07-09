@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 import ScrollToTop from './components/ScrollToTop';
 import ThankYou from './components/ThankYou';
+import Dashboard from './components/Dashboard';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
                 <About />
                 <Skills />
                 <Projects />
+                <Dashboard />
                 <Contact />
               </main>
               <Footer />
