@@ -1,49 +1,41 @@
+this
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export function useWakaTimeStats(apiKey) {
+export function useWakaTimeStats() {
     const [stats, setStats] = useState({
-        languages: [],
         totalSeconds: 0,
+        languages: []
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!apiKey) return;
-
         const fetchStats = async () => {
             setLoading(true);
-            setError(null);
-
             try {
-                const response = await axios.get(
-                    'https://wakatime.com/api/v1/users/current/stats/last_7_days',
-                    {
-                        headers: {
-                            Authorization: `Basic ${btoa(apiKey)}`,
-                        },
-                    }
-                );
+                const res = await axios.get('https://your-backend-url.com/api/wakatime-stats');
+                const data = res.data.data;
 
-                const data = response.data.data;
+                if (!data || !data.languages) throw new Error("Invalid WakaTime response");
 
                 setStats({
-                    totalSeconds: data.total_seconds || 0,
-                    languages: (data.languages || []).map((lang) => ({
+                    totalSeconds: data.total_seconds,
+                    languages: data.languages.map(lang => ({
                         name: lang.name,
                         hours: +(lang.total_seconds / 3600).toFixed(1),
-                    })),
+                        percent: lang.percent
+                    }))
                 });
             } catch (err) {
-                setError(err.response?.data?.error || err.message || 'WakaTime API error');
+                setError(err.message || 'WakaTime stats failed');
             } finally {
                 setLoading(false);
             }
         };
 
         fetchStats();
-    }, [apiKey]);
+    }, []);
 
     return { stats, loading, error };
 }
