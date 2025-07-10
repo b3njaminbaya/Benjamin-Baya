@@ -5,9 +5,11 @@ import {
 } from 'react-icons/lu';
 import {
   SiReact, SiJavascript, SiTypescript, SiHtml5, SiCss3, SiTailwindcss, SiBootstrap,
-  SiNodedotjs, SiFlask, SiDjango, SiPython, 
+  SiNodedotjs, SiFlask, SiDjango, SiPython, SiNextdotjs,
+  SiExpress, SiDart, SiKotlin, SiFirebase,
   SiMongodb, SiPostgresql, SiMysql, SiSqlite,
-  SiGit, SiGithub, SiFigma
+  SiGit, SiGithub, SiFigma, SiTrello, SiVercel,
+  SiFlutter
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
 
@@ -20,7 +22,9 @@ const iconMap = {
   'CSS': <SiCss3 className="w-4 h-4 text-blue-500" />,
   'Tailwind CSS': <SiTailwindcss className="w-4 h-4 text-teal-500" />,
   'Bootstrap': <SiBootstrap className="w-4 h-4 text-purple-600" />,
+  'Next.js': <SiNextdotjs className="w-4 h-4 text-black" />,
   'Node.js': <SiNodedotjs className="w-4 h-4 text-green-600" />,
+  'Express.js': <SiExpress className="w-4 h-4 text-gray-800" />,
   'Flask': <SiFlask className="w-4 h-4 text-gray-700" />,
   'Django': <SiDjango className="w-4 h-4 text-green-700" />,
   'Python': <SiPython className="w-4 h-4 text-blue-600" />,
@@ -30,21 +34,34 @@ const iconMap = {
   'PostgreSQL': <SiPostgresql className="w-4 h-4 text-blue-600" />,
   'MySQL': <SiMysql className="w-4 h-4 text-sky-600" />,
   'SQLite': <SiSqlite className="w-4 h-4 text-gray-600" />,
+  'Firebase': <SiFirebase className="w-4 h-4 text-orange-500" />,
   'Git': <SiGit className="w-4 h-4 text-red-500" />,
   'GitHub': <SiGithub className="w-4 h-4 text-gray-600" />,
   'Figma': <SiFigma className="w-4 h-4 text-pink-600" />,
+  'Trello': <SiTrello className="w-4 h-4 text-blue-500" />,
+  'AWS': <LuCloud className="w-4 h-4 text-orange-400" />,
+  'Flutter': <SiFlutter className="w-4 h-4 text-blue-500" />,
+  'Dart': <SiDart className="w-4 h-4 text-cyan-700" />,
+  'Kotlin': <SiKotlin className="w-4 h-4 text-purple-500" />,
+  'Render': <LuCloud className="w-4 h-4 text-gray-800" />,
+  'Vercel': <SiVercel className="w-4 h-4 text-black" />,
 };
 
 const skillData = [
   {
     category: 'Frontend',
     icon: <LuCode className="w-5 h-5 text-indigo-500" />,
-    skills: ['HTML', 'CSS', 'Tailwind CSS', 'Bootstrap', 'JavaScript', 'React', 'TypeScript'],
+    skills: ['HTML', 'CSS', 'Tailwind CSS', 'Bootstrap', 'JavaScript', 'React', 'Next.js', 'TypeScript'],
   },
   {
     category: 'Backend',
     icon: <LuServer className="w-5 h-5 text-indigo-500" />,
-    skills: ['Python', 'Flask', 'Node.js', 'Django', 'Java', 'Spring Boot'],
+    skills: ['Python', 'Flask', 'Node.js', 'Express.js', 'Django', 'Java', 'Spring Boot'],
+  },
+  {
+    category: 'Mobile',
+    icon: <LuServer className="w-5 h-5 text-indigo-500" />,
+    skills: ['Flutter', 'Dart', 'Kotlin', 'Firebase'],
   },
   {
     category: 'Databases',
@@ -54,7 +71,12 @@ const skillData = [
   {
     category: 'Tools',
     icon: <LuWrench className="w-5 h-5 text-indigo-500" />,
-    skills: ['Git', 'GitHub', 'Figma'],
+    skills: ['Git', 'GitHub', 'Figma', 'Trello'],
+  },
+  {
+    category: 'Cloud & DevOps',
+    icon: <LuCloud className="w-5 h-5 text-indigo-500" />,
+    skills: [ 'AWS', 'Render', 'Vercel'],
   },
 ];
 
