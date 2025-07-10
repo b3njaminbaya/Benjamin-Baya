@@ -38,7 +38,7 @@ const Dashboard = () => {
     ).toFixed(1);
 
     return (
-        <section className="bg-gray-950 text-white py-14 px-6">
+        <section id="dashboard" className="bg-gray-950 text-white py-14 px-6">
             <h2 className="text-3xl font-bold mb-10 text-center text-indigo-400">📊 Real‑Time Dashboard</h2>
 
             {loading && (

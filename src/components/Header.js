@@ -2,7 +2,7 @@ import { useState, useEffect, Suspense, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Typewriter from 'typewriter-effect';
 import {
-  ArrowRight, Mail, Menu, X, User, Code, FileText, Folder
+  ArrowRight, Mail, Menu, X, User, Code, FileText, Folder, Layout
 } from 'lucide-react';
 import { Link } from 'react-scroll';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
@@ -95,6 +95,9 @@ const Header = () => {
           <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-gray-400">
             <FileText size={16} /> Resume
           </a>
+          <Link to="dashboard" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+            <Layout size={16} /> Dashboard
+          </Link>
         </nav>
       </div>
 
@@ -115,6 +118,7 @@ const Header = () => {
                 <li><Link to="contact" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Mail size={18} /> Contact Me</Link></li>
                 <li><Link to="footer" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><ArrowRight size={18} /> Connect</Link></li>
                 <li><a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-indigo-400"><FileText size={18} /> Resume</a></li>
+                <li><Link to="dashboard" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Layout size={18} /> Dashboard</Link></li>
               </ul>
             </motion.div>
           </>
