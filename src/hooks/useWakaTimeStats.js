@@ -25,7 +25,7 @@ export function useWakaTimeStats() {
                         hours: +(lang.total_seconds / 3600).toFixed(1),
                         percent: lang.percent
                     })),
-                    daily:[]
+                    daily: data.daily || []
                 });
             } catch (err) {
                 setError(err.message || 'WakaTime stats failed');

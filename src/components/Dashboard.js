@@ -32,7 +32,11 @@ const Dashboard = () => {
 
     const COLORS = ['#6366f1', '#8b5cf6', '#3b82f6', '#a78bfa', '#ec4899'];
 
-    const weeklyCodeHours = wakaStats?.daily || [];
+    const weeklyCodeHours = (wakaStats?.daily || []).map(d => ({
+        date: new Date(d.date).toLocaleDateString('en-US', { weekday: 'short' }),
+        hours: d.hours
+    }));
+
     const averageCodeHours = (
         weeklyCodeHours.reduce((sum, d) => sum + d.hours, 0) / (weeklyCodeHours.length || 1)
     ).toFixed(1);
@@ -51,10 +55,10 @@ const Dashboard = () => {
             {!loading && !error && (
                 <div className="max-w-7xl mx-auto grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {/* Stat Cards */}
-                    <StatCard title="⌛ Today's Code Time" value={`${(wakaStats.totalSeconds / 3600).toFixed(1)} hrs`} />
+                    <StatCard title="⌛ Today's Code Time" value={wakaStats.totalSeconds ? `${(wakaStats.totalSeconds / 3600).toFixed(1)} hrs` : '—'} />
                     <StatCard title="🧠 Top Language" value={wakaStats.languages[0]?.name || '—'} />
                     <StatCard title="📚 Languages Used" value={wakaStats.languages.length} />
-                    <StatCard title="📝 Commits Today" value={githubStats.commitsToday} />
+                    <StatCard title="📝 Commits Today" value={githubStats.commitsToday ?? '—'} />
                     <StatCard title="📂 Public Repos" value={githubStats.repos} />
                     <StatCard title="📅 Avg Weekly Code Time" value={`${averageCodeHours} hrs/day`} />
                 </div>
@@ -70,24 +74,26 @@ const Dashboard = () => {
                         className="bg-gray-800 rounded-2xl p-6 shadow-md"
                     >
                         <h3 className="text-indigo-300 text-md font-semibold mb-4">🔵 Most Used Languages</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <PieChart>
-                                <Pie
-                                    data={wakaStats.languages.slice(0, 5)}
-                                    dataKey="percent"
-                                    nameKey="name"
-                                    cx="50%"
-                                    cy="50%"
-                                    outerRadius={90}
-                                    label
-                                >
-                                    {wakaStats.languages.slice(0, 5).map((_, index) => (
-                                        <Cell key={index} fill={COLORS[index % COLORS.length]} />
-                                    ))}
-                                </Pie>
-                                <Tooltip />
-                            </PieChart>
-                        </ResponsiveContainer>
+                        {wakaStats.languages?.length > 0 && (
+                            <ResponsiveContainer width="100%" height={300}>
+                                <PieChart>
+                                    <Pie
+                                        data={wakaStats.languages.slice(0, 5)}
+                                        dataKey="percent"
+                                        nameKey="name"
+                                        cx="50%"
+                                        cy="50%"
+                                        outerRadius={90}
+                                        label
+                                    >
+                                        {wakaStats.languages.slice(0, 5).map((_, index) => (
+                                            <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                                        ))}
+                                    </Pie>
+                                    <Tooltip />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        )}
                     </motion.div>
 
                     {/* Line Chart */}
@@ -115,6 +121,36 @@ const Dashboard = () => {
                     </motion.div>
                 </div>
             )}
+
+            {/* WakaTime daily chart (full width) */}
+            <div className="mt-12">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="bg-gray-800 rounded-2xl p-6 shadow-md"
+                >
+                    <h3 className="text-indigo-300 text-md font-semibold mb-4">⏱️ Weekly Code Time (hrs/day)</h3>
+                    {weeklyCodeHours.length === 0 ? (
+                        <p className="text-gray-400">No WakaTime data available.</p>
+                    ) : (
+                        <ResponsiveContainer width="100%" height={300}>
+                            <LineChart data={weeklyCodeHours}>
+                                <XAxis dataKey="date" stroke="#9ca3af" />
+                                <YAxis stroke="#9ca3af" />
+                                <Tooltip />
+                                <Line
+                                    type="monotone"
+                                    dataKey="hours"
+                                    stroke="#6366f1"
+                                    strokeWidth={3}
+                                    activeDot={{ r: 8 }}
+                                />
+                            </LineChart>
+                        </ResponsiveContainer>
+                    )}
+                </motion.div>
+            </div>
         </section>
     );
 };
