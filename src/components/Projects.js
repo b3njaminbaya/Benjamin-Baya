@@ -93,20 +93,6 @@ const projects = [
       "Responsive design for mobile viewing",
     ],
   },
-  {
-    title: "Reading Tracker CLI",
-    type: "CLI Tool",
-    description: "A CLI tool for managing book collections and tracking reading progress.",
-    tech: ["Python", "CLI", "OOP"],
-    image: "/reading-tracker.png",
-    github: "https://github.com/benjaminmweribaya/CLI-based-Reading-Tracker-Application",
-    featured: false,
-    details: [
-      "Implements Object-Oriented Design",
-      "Allows CRUD operations on book entries",
-      "Intuitive CLI navigation for end-users",
-    ],
-  },
 ];
 
 const Projects = () => {
