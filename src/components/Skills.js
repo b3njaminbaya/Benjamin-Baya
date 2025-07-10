@@ -74,7 +74,7 @@ const skillData = [
     skills: ['Git', 'GitHub', 'Figma', 'Trello'],
   },
   {
-    category: 'Cloud & DevOps',
+    category: 'DevOps',
     icon: <LuCloud className="w-5 h-5 text-indigo-500" />,
     skills: [ 'AWS', 'Render', 'Vercel'],
   },
@@ -94,7 +94,7 @@ const Skills = () => {
           Tech Stack
         </motion.h2>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           {skillData.map((block, idx) => {
             const headingId = `skills-${block.category.toLowerCase().replace(/\s+/g, '-')}`;
             return (
