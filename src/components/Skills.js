@@ -43,6 +43,7 @@ const iconMap = {
   'Flutter': <SiFlutter className="w-4 h-4 text-blue-500" />,
   'Dart': <SiDart className="w-4 h-4 text-cyan-700" />,
   'Kotlin': <SiKotlin className="w-4 h-4 text-purple-500" />,
+  'React Native': <SiReact className="w-4 h-4 text-cyan-600" />,
   'Render': <LuCloud className="w-4 h-4 text-gray-800" />,
   'Vercel': <SiVercel className="w-4 h-4 text-black" />,
 };
@@ -61,7 +62,7 @@ const skillData = [
   {
     category: 'Mobile',
     icon: <LuServer className="w-5 h-5 text-indigo-500" />,
-    skills: ['Flutter', 'Dart', 'Kotlin', 'Firebase'],
+    skills: ['Flutter', 'Dart', 'Kotlin', 'React Native', 'Firebase'],
   },
   {
     category: 'Databases',
