@@ -40,6 +40,7 @@ const iconMap = {
   'Figma': <SiFigma className="w-4 h-4 text-pink-600" />,
   'Trello': <SiTrello className="w-4 h-4 text-blue-500" />,
   'AWS': <LuCloud className="w-4 h-4 text-orange-400" />,
+  'Azure': <LuCloud className="w-4 h-4 text-blue-500" />,
   'Flutter': <SiFlutter className="w-4 h-4 text-blue-500" />,
   'Dart': <SiDart className="w-4 h-4 text-cyan-700" />,
   'Kotlin': <SiKotlin className="w-4 h-4 text-purple-500" />,
@@ -77,7 +78,7 @@ const skillData = [
   {
     category: 'DevOps',
     icon: <LuCloud className="w-5 h-5 text-indigo-500" />,
-    skills: [ 'AWS', 'Render', 'Vercel'],
+    skills: [ 'AWS', 'Azure', 'Render', 'Vercel'],
   },
 ];
 
