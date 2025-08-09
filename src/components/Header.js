@@ -7,6 +7,7 @@ import {
 import { Link } from 'react-scroll';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
+import ResumeModal from './ResumeModal';
 
 const ResponsiveShapes = () => {
   const { size } = useThree();
@@ -52,6 +53,7 @@ const FloatingCube = () => {
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
+  const [showResumeModal, setShowResumeModal] = useState(false);
 
   return (
     <header className="relative bg-gray-900 text-white min-h-screen flex flex-col justify-between overflow-hidden">
@@ -73,29 +75,67 @@ const Header = () => {
         <h1 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-pink-400 to-yellow-400">
           Benjamin Mweri Baya
         </h1>
-        <button className="block md:hidden text-white focus:outline-none" onClick={toggleMenu}>
+        <button
+          className="block md:hidden text-white focus:outline-none"
+          onClick={toggleMenu}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        >
           <Menu size={24} />
         </button>
         <nav className="hidden md:flex space-x-6 items-center">
-          <Link to="about" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+          <Link
+            to="about"
+            smooth duration={500}
+            className="flex items-center gap-1 hover:text-gray-400 cursor-pointer"
+            aria-label="About section"
+          >
             <User size={16} /> About
           </Link>
-          <Link to="skills" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+          <Link
+            to="skills"
+            smooth duration={500}
+            className="flex items-center gap-1 hover:text-gray-400 cursor-pointer"
+            aria-label="Skills section"
+          >
             <Code size={16} /> Skills
           </Link>
-          <Link to="projects" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+          <Link
+            to="projects"
+            smooth duration={500}
+            className="flex items-center gap-1 hover:text-gray-400 cursor-pointer"
+            aria-label="Projects section"
+          >
             <Folder size={16} /> Projects
           </Link>
-          <Link to="contact" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+          <Link
+            to="contact"
+            smooth duration={500}
+            className="flex items-center gap-1 hover:text-gray-400 cursor-pointer"
+            aria-label="Contact section"
+          >
             <Mail size={16} /> Contact Me
           </Link>
-          <Link to="footer" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+          <Link
+            to="footer"
+            smooth duration={500}
+            className="flex items-center gap-1 hover:text-gray-400 cursor-pointer"
+            aria-label="Connect section"
+          >
             <ArrowRight size={16} /> Connect
           </Link>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-gray-400">
+          <button
+            onClick={() => setShowResumeModal(true)}
+            className="flex items-center gap-1 hover:text-gray-400"
+            aria-label="Open resume"
+          >
             <FileText size={16} /> Resume
-          </a>
-          <Link to="dashboard" smooth duration={500} className="flex items-center gap-1 hover:text-gray-400 cursor-pointer">
+          </button>
+          <Link
+            to="dashboard"
+            smooth duration={500}
+            className="flex items-center gap-1 hover:text-gray-400 cursor-pointer"
+            aria-label="Dashboard section"
+          >
             <Layout size={16} /> Dashboard
           </Link>
         </nav>
@@ -117,7 +157,15 @@ const Header = () => {
                 <li><Link to="projects" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Folder size={18} /> Projects</Link></li>
                 <li><Link to="contact" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Mail size={18} /> Contact Me</Link></li>
                 <li><Link to="footer" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><ArrowRight size={18} /> Connect</Link></li>
-                <li><a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-indigo-400"><FileText size={18} /> Resume</a></li>
+                <li>
+                  <button
+                    onClick={() => { setShowResumeModal(true); toggleMenu(); }}
+                    className="flex items-center gap-2 hover:text-indigo-400"
+                    aria-label="Open resume"
+                  >
+                    <FileText size={18} /> Resume
+                  </button>
+                </li>
                 <li><Link to="dashboard" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Layout size={18} /> Dashboard</Link></li>
               </ul>
             </motion.div>
@@ -156,11 +204,14 @@ const Header = () => {
           <Link to="contact" smooth duration={500} className="inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold px-6 py-3 rounded-lg cursor-pointer transition-all">
             <Mail className="mr-2" size={18} /> Contact Me
           </Link>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-all">
+          <button onClick={() => setShowResumeModal(true)} className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-all">
             <FileText className="mr-2" size={18} /> Resume
-          </a>
+          </button>
         </motion.div>
       </motion.section>
+
+      {/* Resume Modal */}
+      <ResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
     </header>
   );
 };

@@ -1,10 +1,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Document, Page, pdfjs } from 'react-pdf';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
-pdfjs.GlobalWorkerOptions.workerSrc = `pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
 
 const ResumeModal = ({ isOpen, onClose }) => {
     const [numPages, setNumPages] = useState(null);
@@ -12,6 +12,17 @@ const ResumeModal = ({ isOpen, onClose }) => {
     const onDocumentLoadSuccess = ({ numPages }) => {
         setNumPages(numPages);
     };
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        }
+
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [isOpen]);
+
 
     return (
         <AnimatePresence>
@@ -42,7 +53,9 @@ const ResumeModal = ({ isOpen, onClose }) => {
                                 <X size={24} />
                             </button>
 
-                            <div className="h-full overflow-y-auto bg-gray-100 p-4">
+                            <div className="h-full overflow-y-auto bg-gray-100 p-4"
+                                onWheel={(e) => e.stopPropagation()}
+                            >
                                 <div className="text-center text-gray-600 text-sm mb-2">
                                     If the resume doesn’t load,{' '}
                                     <a
@@ -62,13 +75,16 @@ const ResumeModal = ({ isOpen, onClose }) => {
                                         loading={<p>Loading PDF...</p>}
                                         error={<p>Could not load PDF.</p>}
                                     >
-                                        {Array.from(new Array(numPages), (el, index) => (
-                                            <Page
-                                                key={`page_${index + 1}`}
-                                                pageNumber={index + 1}
-                                                width={window.innerWidth < 768 ? 320 : 600}
-                                            />
-                                        ))}
+                                        {numPages &&
+                                            Array.from({ length: numPages }, (_, index) => (
+                                                <Page
+                                                    key={`page_${index + 1}`}
+                                                    pageNumber={index + 1}
+                                                    renderMode="canvas"
+                                                    width={typeof window !== 'undefined' && window.innerWidth < 768 ? 320 : 600}
+                                                />
+                                            ))
+                                        }
                                     </Document>
                                 </div>
                             </div>
