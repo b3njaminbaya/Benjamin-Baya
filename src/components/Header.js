@@ -7,7 +7,6 @@ import {
 import { Link } from 'react-scroll';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
-import ResumeModal from './ResumeModal';
 
 const ResponsiveShapes = () => {
   const { size } = useThree();
@@ -123,13 +122,16 @@ const Header = () => {
           >
             <ArrowRight size={16} /> Connect
           </Link>
-          <button
-            onClick={() => setShowResumeModal(true)}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-1 hover:text-gray-400"
-            aria-label="Open resume"
+            aria-label="Open resume in new tab"
           >
             <FileText size={16} /> Resume
-          </button>
+          </a>
+
           <Link
             to="dashboard"
             smooth duration={500}
@@ -158,13 +160,17 @@ const Header = () => {
                 <li><Link to="contact" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Mail size={18} /> Contact Me</Link></li>
                 <li><Link to="footer" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><ArrowRight size={18} /> Connect</Link></li>
                 <li>
-                  <button
-                    onClick={() => { setShowResumeModal(true); toggleMenu(); }}
+                  <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-indigo-400"
-                    aria-label="Open resume"
+                    aria-label="Open resume in new tab"
+                    onClick={toggleMenu}
                   >
                     <FileText size={18} /> Resume
-                  </button>
+                  </a>
+
                 </li>
                 <li><Link to="dashboard" smooth duration={500} className="flex items-center gap-2 hover:text-indigo-400 cursor-pointer" onClick={toggleMenu}><Layout size={18} /> Dashboard</Link></li>
               </ul>
@@ -204,14 +210,18 @@ const Header = () => {
           <Link to="contact" smooth duration={500} className="inline-flex items-center bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold px-6 py-3 rounded-lg cursor-pointer transition-all">
             <Mail className="mr-2" size={18} /> Contact Me
           </Link>
-          <button onClick={() => setShowResumeModal(true)} className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-all">
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-all"
+          >
             <FileText className="mr-2" size={18} /> Resume
-          </button>
+          </a>
+
         </motion.div>
       </motion.section>
 
-      {/* Resume Modal */}
-      <ResumeModal isOpen={showResumeModal} onClose={() => setShowResumeModal(false)} />
     </header>
   );
 };
