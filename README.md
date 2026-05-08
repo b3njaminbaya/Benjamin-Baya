@@ -59,8 +59,6 @@ Portfolio/
 
 ---
 
-## Local Development
-
 ### Prerequisites
 
 - Node.js 18+
