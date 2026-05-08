@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink, CalendarDays } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const Header = () => (
@@ -114,6 +114,23 @@ const Header = () => (
           className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-7 py-3.5 rounded-lg transition-all border border-white/20"
         >
           <ExternalLink className="mr-2" size={18} /> Start a Project
+        </a>
+      </motion.div>
+
+      {/* Tertiary CTA — consultation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.85 }}
+      >
+        <a
+          href="https://www.teevexa.com/book-consultation"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-emerald-400 transition-colors mt-4"
+        >
+          <CalendarDays size={15} />
+          Not sure where to start? Book a free consultation
         </a>
       </motion.div>
     </motion.section>

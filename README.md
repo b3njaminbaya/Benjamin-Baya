@@ -1,130 +1,136 @@
-# Benjamin Mweri Baya – Portfolio Website 💻🌍
+# Benjamin Mweri Baya — Portfolio
 
-Welcome to my professional developer portfolio! This is a sleek, modern, and fully responsive single-page website built to showcase my background, projects, skills, resume, and contact details. It also includes a draggable chatbot powered by local logic and animations for a rich interactive user experience.
+Personal developer portfolio and API backend, built as an npm workspaces monorepo.
 
----
-
-## 🚀 Live Demo
-
-🔗 [Visit the Live Website](https://benjamin-mweri-baya.vercel.app)
+**Live:** [benjamin-mweri-baya.vercel.app](https://benjamin-mweri-baya.vercel.app)
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
-
-.
-├── build/                 # Production build files
-├── public/                # Static public files (e.g. index.html, resume)
-├── src/                   # Source code
-│   ├── assets/            # Image and asset files
-│   ├── components/        # All reusable React components
-│   ├── App.js             # Main application component
-│   ├── index.js           # Entry point for React DOM
-│   └── index.css          # Tailwind base styling
-├── tailwind.config.js     # Tailwind configuration
-├── package.json           # Project metadata and dependencies
-├── LICENSE
+Portfolio/
+├── apps/
+│   ├── web/          # React 19 + Vite frontend (deployed to Vercel)
+│   └── api/          # Express.js backend — chatbot & stats proxy (deployed to Render)
+├── package.json      # Workspace root
 └── README.md
-
-````
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend Framework:** React.js
-- **Styling:** Tailwind CSS, Custom CSS
-- **Icons:** Lucide Icons
-- **Animations:** Framer Motion, Typewriter Effect
-- **Forms:** [FormSubmit](https://formsubmit.co) integration
-- **Deployment:** Vercel
-- **PDF Download:** Embedded resume for easy recruiter access
+```
 
 ---
 
-## ✨ Features
+## Tech Stack
 
-- ⚡ **Responsive Design** – Fully functional across all devices (mobile, tablet, desktop)
-- 🧠 **Smart Chatbot** – Draggable chatbot assistant with emoji and typing animations, local memory persistence, and sound effects
-- 🎯 **Interactive Sections** – Smooth scroll navigation with Typewriter introduction
-- 📁 **Projects Gallery** – Animated project cards with GitHub and live demo links
-- 📩 **Contact Form** – Integrated with FormSubmit, includes file attachment and reCAPTCHA-ready structure
-- ✅ **Success Page** – Thank You confirmation component upon form submission
-- 📄 **Resume Download** – One-click access to PDF resume from both the hero section and nav bar
-- 🧾 **Client Intake CTA** – Additional form for business clients seeking development services via Tevexa Technologies
-- 🔝 **Scroll to Top** – Floating scroll-to-top button for enhanced UX
+### Frontend (`apps/web`)
+- **React 19** — UI framework
+- **Vite** — build tool
+- **Tailwind CSS** — utility-first styling
+- **Framer Motion** — animations and scroll effects
+- **React Router v6** — client-side routing
+- **Recharts** — dashboard data visualisation
+- **Lucide React** — icons
+- **simple-icons** — brand/technology icons
 
----
-
-## 📄 Resume
-
-My resume (`resume.pdf`) is stored in the `/public` and `/build` directories to ensure accessibility and download compatibility in production.
-
-Users can download it via:
-
-- Navbar link (Resume)
-- Hero section "Download Resume" button
+### Backend (`apps/api`)
+- **Express.js** — REST API server
+- **Groq API** (llama-3.1-8b-instant) — AI chatbot, free tier
+- **WakaTime API** — coding activity stats proxy
+- **GitHub API** — contribution data proxy
 
 ---
 
-## 🔧 Setup Instructions
+## Features
 
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/benjaminmweribaya/Benjamin-Mweri-Baya.git
-   cd Benjamin-Mweri-Baya
-   ````
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Run the app locally**
-
-   ```bash
-   npm start
-   ```
-
-4. **Build for production**
-
-   ```bash
-   npm run build
-   ```
+- **Hero section** — animated typewriter introduction with CTA links
+- **About** — bio with Teevexa callout and consultation CTA
+- **Animated counters** — projects shipped, countries served, happy clients
+- **Experience timeline** — career and education history, alternating left-right layout
+- **Services** — what I build: web apps, mobile, SaaS, APIs, business systems
+- **Skills** — 4-column tech stack grid with proficiency levels
+- **Projects gallery** — filterable cards with GitHub and live demo links
+- **Developer dashboard** — live WakaTime + GitHub stats with charts
+- **Contact form** — direct email via FormSubmit
+- **Resume viewer** — dedicated `/resume` route with embedded PDF, download, and open-in-new-tab
+- **AI chatbot** — portfolio-aware assistant powered by Groq, with deterministic fallback
+- **Command palette** — `Cmd/Ctrl+K` quick navigation
+- **Scroll progress bar** — 2px gradient indicator at top of page
+- **Dark mode** — system-aware with manual toggle
+- **Fully responsive** — mobile, tablet, desktop
 
 ---
 
-## 📬 Contact
+## Local Development
 
-📧 **Email:** [b3njaminbaya@gmail.com](mailto:b3njaminbaya@gmail.com)
-🌐 **Website:** [www.benjaminmweribaya.com](https://benjamin-mweri-baya.vercel.app)
-📱 **WhatsApp:** [+254 783 797132](https://wa.me/254783797132)
+### Prerequisites
+
+- Node.js 18+
+- npm 9+
+
+### Setup
+
+```bash
+# Clone
+git clone https://github.com/benjaminmweribaya/Benjamin-Mweri-Baya.git
+cd Benjamin-Mweri-Baya
+
+# Install all workspace dependencies
+npm install
+
+# Copy and fill environment files
+cp apps/api/.env.example apps/api/.env
+# Add your GROQ_API_KEY, WAKATIME_API_KEY, GITHUB_TOKEN to apps/api/.env
+```
+
+### Run
+
+```bash
+# Frontend only
+npm run dev --workspace=apps/web
+
+# Backend only
+npm run dev --workspace=apps/api
+
+# Both concurrently (from root, if concurrently is configured)
+npm run dev
+```
+
+Frontend runs on `http://localhost:5173`, backend on `http://localhost:5000`.
 
 ---
 
-## 🌟 Contributing
+## Environment Variables
 
-This portfolio is personal, but suggestions and constructive contributions are always welcome. Feel free to fork the repo and submit a PR if you have something helpful!
+### `apps/api/.env`
 
----
+| Variable | Description |
+|---|---|
+| `GROQ_API_KEY` | Groq API key — get one free at [console.groq.com](https://console.groq.com) |
+| `WAKATIME_API_KEY` | WakaTime API key from your account settings |
+| `GITHUB_TOKEN` | GitHub personal access token (read-only) |
+| `PORT` | Server port (default: 5000) |
 
-## 📝 License
-
-This project is licensed under the [MIT License](./LICENSE).
-
----
-
-## 🙏 Acknowledgements
-
-* [FormSubmit](https://formsubmit.co) – for serverless form handling
-* [Lucide Icons](https://lucide.dev/)
-* [Framer Motion](https://www.framer.com/motion/)
-* [TypewriterJS](https://www.npmjs.com/package/typewriter-effect)
-* [Vercel](https://vercel.com/) – for seamless React deployment
+The chatbot degrades gracefully to deterministic responses if `GROQ_API_KEY` is missing.
 
 ---
 
+## Deployment
+
+| App | Platform | Notes |
+|---|---|---|
+| `apps/web` | Vercel | Auto-deploys from `main` |
+| `apps/api` | Render | Web service; add env vars in dashboard |
+
+---
+
+## Contact
+
+- **Email:** [b3njaminbaya@gmail.com](mailto:b3njaminbaya@gmail.com)
+- **LinkedIn:** [linkedin.com/in/benjamin-mweri-baya](https://linkedin.com/in/benjamin-mweri-baya)
+- **GitHub:** [github.com/benjaminmweribaya](https://github.com/benjaminmweribaya)
+- **Teevexa:** [teevexa.com](https://www.teevexa.com)
+
+---
+
+## License
+
+[MIT](./LICENSE)

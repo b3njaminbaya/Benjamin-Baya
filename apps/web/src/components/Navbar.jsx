@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { Menu, X, Sun, Moon, User, Code, Folder, BarChart2, Mail, FileText } from 'lucide-react';
+import { Link as RouterLink } from 'react-router-dom';
+import { Menu, X, Sun, Moon, User, Briefcase, Code, Folder, Mail, FileText } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 
 const NAV_LINKS = [
-  { to: 'about', label: 'About', icon: User },
-  { to: 'skills', label: 'Skills', icon: Code },
-  { to: 'projects', label: 'Projects', icon: Folder },
-  { to: 'dashboard', label: 'Dashboard', icon: BarChart2 },
-  { to: 'contact', label: 'Contact', icon: Mail },
+  { to: 'about',      label: 'About',      icon: User },
+  { to: 'experience', label: 'Experience', icon: Briefcase },
+  { to: 'skills',     label: 'Skills',     icon: Code },
+  { to: 'projects',   label: 'Projects',   icon: Folder },
+  { to: 'contact',    label: 'Contact',    icon: Mail },
 ];
 
 const SECTIONS = NAV_LINKS.map(l => l.to);
@@ -101,14 +102,12 @@ const Navbar = () => {
                     {label}
                   </Link>
                 ))}
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <RouterLink
+                  to="/resume"
                   className="flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-500 dark:hover:text-indigo-400"
                 >
                   <FileText size={14} /> Resume
-                </a>
+                </RouterLink>
               </nav>
 
               <div className="flex items-center gap-2">
@@ -180,15 +179,13 @@ const Navbar = () => {
                 <Icon size={18} /> {label}
               </Link>
             ))}
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <RouterLink
+              to="/resume"
               className="flex items-center gap-2 text-base font-medium text-gray-700 dark:text-gray-200 hover:text-indigo-500 py-2"
               onClick={() => setMenuOpen(false)}
             >
               <FileText size={18} /> Resume
-            </a>
+            </RouterLink>
           </motion.nav>
         )}
       </AnimatePresence>

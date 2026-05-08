@@ -37,7 +37,7 @@ const StatCard = ({ title, value }) => (
   >
     <h3 className="text-indigo-300 text-sm font-medium mb-2">{title}</h3>
     <p className="text-3xl font-bold text-white">
-      {value !== undefined ? value : '—'}
+      {value !== undefined && value !== null ? value : '—'}
     </p>
   </motion.div>
 );
@@ -46,17 +46,19 @@ const Dashboard = () => {
   const { stats: githubStats, loading: ghLoading, error: ghError } = useGitHubStats();
   const { stats: wakaStats, loading: wakaLoading, error: wakaError } = useWakaTimeStats();
 
-  const loading = ghLoading || wakaLoading;
-  const error = ghError || wakaError;
+  // Today is the last item in the daily array (server returns 7-day window ending today)
+  const todayHours = wakaStats.daily.length > 0
+    ? wakaStats.daily[wakaStats.daily.length - 1].hours
+    : null;
 
-  const weeklyCodeHours = (wakaStats?.daily || []).map(d => ({
+  const weeklyCodeHours = wakaStats.daily.map(d => ({
     date: new Date(d.date).toLocaleDateString('en-US', { weekday: 'short' }),
     hours: d.hours,
   }));
 
-  const averageCodeHours = (
-    weeklyCodeHours.reduce((sum, d) => sum + d.hours, 0) / (weeklyCodeHours.length || 1)
-  ).toFixed(1);
+  const avgDailyHours = weeklyCodeHours.length > 0
+    ? (weeklyCodeHours.reduce((sum, d) => sum + d.hours, 0) / weeklyCodeHours.length).toFixed(1)
+    : null;
 
   return (
     <section id="dashboard" className="min-h-screen bg-gray-950 text-white py-14">
@@ -71,75 +73,123 @@ const Dashboard = () => {
           Real-Time Dashboard
         </motion.h2>
 
-        {error && (
-          <p className="text-center text-red-400 font-medium mb-6">⚠️ {error}</p>
+        {/* Per-source error banners — don't block the whole dashboard */}
+        {ghError && (
+          <p className="text-center text-red-400 text-sm font-medium mb-3">⚠️ GitHub: {ghError}</p>
+        )}
+        {wakaError && (
+          <p className="text-center text-amber-400 text-sm font-medium mb-3">⚠️ Activity tracker: {wakaError}</p>
         )}
 
-        {/* Stat cards */}
+        {/* Stat cards — each source loads independently */}
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {loading ? (
-            Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)
+          {/* WakaTime cards */}
+          {wakaLoading ? (
+            <>
+              <SkeletonCard />
+              <SkeletonCard />
+              <SkeletonCard />
+            </>
           ) : (
             <>
-              <StatCard title="Today's Code Time" value={wakaStats.totalSeconds ? `${(wakaStats.totalSeconds / 3600).toFixed(1)} hrs` : '—'} />
-              <StatCard title="Top Language" value={wakaStats.languages[0]?.name || '—'} />
-              <StatCard title="Languages Used" value={wakaStats.languages.length} />
+              <StatCard
+                title="Today's Code Time"
+                value={todayHours !== null ? `${todayHours.toFixed(1)} hrs` : '—'}
+              />
+              <StatCard
+                title="Top Language"
+                value={wakaStats.languages[0]?.name || '—'}
+              />
+              <StatCard
+                title="Avg Daily Code Time"
+                value={avgDailyHours !== null ? `${avgDailyHours} hrs` : '—'}
+              />
+            </>
+          )}
+
+          {/* GitHub cards */}
+          {ghLoading ? (
+            <>
+              <SkeletonCard />
+              <SkeletonCard />
+              <SkeletonCard />
+            </>
+          ) : (
+            <>
               <StatCard title="Commits Today" value={githubStats.commitsToday ?? '—'} />
-              <StatCard title="Public Repos" value={githubStats.repos} />
-              <StatCard title="Avg Weekly Code Time" value={`${averageCodeHours} hrs/day`} />
+              <StatCard title="Public Repos" value={githubStats.repos ?? '—'} />
+              <StatCard
+                title="Languages Used"
+                value={wakaLoading ? '—' : (wakaStats.languages.length || '—')}
+              />
             </>
           )}
         </div>
 
         {/* Charts */}
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {loading ? (
-            <>
-              <SkeletonChart />
-              <SkeletonChart />
-            </>
+          {wakaLoading ? (
+            <SkeletonChart />
           ) : (
-            <>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="bg-gray-800 rounded-2xl p-6 shadow-md"
-              >
-                <h3 className="text-indigo-300 text-sm font-semibold mb-4">Most Used Languages</h3>
-                {wakaStats.languages?.length > 0 && (
-                  <ResponsiveContainer width="100%" height={300}>
-                    <PieChart>
-                      <Pie data={wakaStats.languages.slice(0, 5)} dataKey="percent" nameKey="name" cx="50%" cy="50%" outerRadius={90} label>
-                        {wakaStats.languages.slice(0, 5).map((_, i) => (
-                          <Cell key={i} fill={COLORS[i % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip />
-                    </PieChart>
-                  </ResponsiveContainer>
-                )}
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                className="bg-gray-800 rounded-2xl p-6 shadow-md"
-              >
-                <h3 className="text-indigo-300 text-sm font-semibold mb-4">Weekly Contributions</h3>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-gray-800 rounded-2xl p-6 shadow-md"
+            >
+              <h3 className="text-indigo-300 text-sm font-semibold mb-4">Most Used Languages</h3>
+              {wakaStats.languages?.length > 0 ? (
                 <ResponsiveContainer width="100%" height={300}>
-                  <LineChart data={githubStats.weeklyCommits}>
-                    <XAxis dataKey="day" stroke="#9ca3af" />
-                    <YAxis stroke="#9ca3af" />
+                  <PieChart>
+                    <Pie
+                      data={wakaStats.languages.slice(0, 5)}
+                      dataKey="percent"
+                      nameKey="name"
+                      cx="50%"
+                      cy="50%"
+                      outerRadius={90}
+                      label
+                    >
+                      {wakaStats.languages.slice(0, 5).map((_, i) => (
+                        <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                      ))}
+                    </Pie>
                     <Tooltip />
-                    <Line type="monotone" dataKey="commits" stroke="#8b5cf6" strokeWidth={3} activeDot={{ r: 8 }} />
-                  </LineChart>
+                  </PieChart>
                 </ResponsiveContainer>
-              </motion.div>
-            </>
+              ) : (
+                <p className="text-gray-400 text-sm">No language data available.</p>
+              )}
+            </motion.div>
+          )}
+
+          {ghLoading ? (
+            <SkeletonChart />
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-gray-800 rounded-2xl p-6 shadow-md"
+            >
+              <h3 className="text-indigo-300 text-sm font-semibold mb-4">Weekly Contributions</h3>
+              <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={githubStats.weeklyCommits}>
+                  <XAxis dataKey="day" stroke="#9ca3af" />
+                  <YAxis stroke="#9ca3af" allowDecimals={false} />
+                  <Tooltip />
+                  <Line
+                    type="monotone"
+                    dataKey="commits"
+                    stroke="#8b5cf6"
+                    strokeWidth={3}
+                    activeDot={{ r: 8 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </motion.div>
           )}
         </div>
 
@@ -165,7 +215,7 @@ const Dashboard = () => {
 
         {/* Weekly code time chart */}
         <div className="mt-10">
-          {loading ? (
+          {wakaLoading ? (
             <SkeletonChart />
           ) : (
             <motion.div
@@ -175,7 +225,7 @@ const Dashboard = () => {
               viewport={{ once: true }}
               className="bg-gray-800 rounded-2xl p-6 shadow-md"
             >
-              <h3 className="text-indigo-300 text-sm font-semibold mb-4">Weekly Code Time (hrs/day)</h3>
+              <h3 className="text-indigo-300 text-sm font-semibold mb-4">Daily Code Time This Week (hrs)</h3>
               {weeklyCodeHours.length === 0 ? (
                 <p className="text-gray-400 text-sm">No WakaTime data available.</p>
               ) : (
@@ -184,7 +234,13 @@ const Dashboard = () => {
                     <XAxis dataKey="date" stroke="#9ca3af" />
                     <YAxis stroke="#9ca3af" />
                     <Tooltip />
-                    <Line type="monotone" dataKey="hours" stroke="#6366f1" strokeWidth={3} activeDot={{ r: 8 }} />
+                    <Line
+                      type="monotone"
+                      dataKey="hours"
+                      stroke="#6366f1"
+                      strokeWidth={3}
+                      activeDot={{ r: 8 }}
+                    />
                   </LineChart>
                 </ResponsiveContainer>
               )}

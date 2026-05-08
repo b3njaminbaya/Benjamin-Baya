@@ -4,26 +4,31 @@ import axios from 'axios';
 const API_BASE = import.meta.env.VITE_API_URL || 'https://portfolio-server-kbti.onrender.com';
 
 export function useGitHubStats() {
-    const [stats, setStats] = useState({ commitsToday: 0, repos: 0, weeklyCommits: [] });
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+  const [stats, setStats] = useState({ commitsToday: null, repos: null, weeklyCommits: [] });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchStats = async () => {
-            setLoading(true);
-            try {
-                const res = await axios.get(`${API_BASE}/api/github-stats`);
-                const { commitsToday, repos, weeklyCommits } = res.data;
-                setStats({ commitsToday, repos, weeklyCommits });
-            } catch (err) {
-                setError(err.message || 'GitHub stats unavailable');
-            } finally {
-                setLoading(false);
-            }
-        };
+  useEffect(() => {
+    let mounted = true;
 
-        fetchStats();
-    }, []);
+    const fetchStats = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(`${API_BASE}/api/github-stats`);
+        if (!mounted) return;
+        const { commitsToday, repos, weeklyCommits } = res.data;
+        setStats({ commitsToday, repos, weeklyCommits });
+      } catch (err) {
+        if (!mounted) return;
+        setError('GitHub stats unavailable');
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    };
 
-    return { stats, loading, error };
+    fetchStats();
+    return () => { mounted = false; };
+  }, []);
+
+  return { stats, loading, error };
 }

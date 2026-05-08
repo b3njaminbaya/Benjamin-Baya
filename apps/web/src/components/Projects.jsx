@@ -5,9 +5,9 @@ import Container from './ui/Container';
 
 const projects = [
   {
-    title: "Task Management App",
+    title: "Taskly",
     type: "Full-Stack",
-    description: "A comprehensive task management system designed to streamline and optimize organizational task tracking, assignment, and completion.",
+    description: "A real-time task management application built for teams — with live updates via WebSocket, collaborative workspaces, and a clean drag-and-drop interface.",
     tech: ["React", "Vite", "Tailwind CSS", "Flask", "PostgreSQL", "WebSocket"],
     image: "/taskly.png",
     github: "https://github.com/benjaminmweribaya/taskly-app-front-end",
@@ -96,7 +96,7 @@ const projects = [
   },
 ];
 
-const FILTER_TYPES = ['All', 'Full-Stack', 'Front-End'];
+const FILTER_TYPES = ['All', 'Full-Stack', 'Front-End', 'Mobile'];
 
 const Projects = () => {
   const [filter, setFilter] = useState('All');

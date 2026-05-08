@@ -3,15 +3,16 @@ import { motion } from 'framer-motion';
 import { Github, Linkedin, Instagram, Facebook, Youtube, ExternalLink } from 'lucide-react';
 import { SiTiktok } from 'react-icons/si';
 import { Link } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
 
 const panels = [
   { label: 'Projects',    to: 'projects' },
   { label: 'Contact Me',  to: 'contact' },
-  { label: 'Resume',      to: '/resume.pdf', external: true },
+  { label: 'Resume',      to: '/resume', route: true },
   { label: 'Skills',      to: 'skills' },
 ];
 
-const AnimatedPanel = ({ label, to, external, index }) => (
+const AnimatedPanel = ({ label, to, external, route, index }) => (
   <motion.div
     initial={{ y: 60, opacity: 0 }}
     whileInView={{ y: 0, opacity: 1 }}
@@ -29,6 +30,13 @@ const AnimatedPanel = ({ label, to, external, index }) => (
       >
         {label}
       </a>
+    ) : route ? (
+      <RouterLink
+        to={to}
+        className="w-full h-full flex items-center justify-center text-white"
+      >
+        {label}
+      </RouterLink>
     ) : (
       <Link
         to={to}
@@ -87,6 +95,7 @@ const Footer = () => (
               label={panel.label}
               to={panel.to}
               external={panel.external}
+              route={panel.route}
               index={index}
             />
           ))}

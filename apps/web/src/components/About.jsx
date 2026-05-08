@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, CalendarDays, ArrowRight } from 'lucide-react';
 import profile from '../assets/profile.png';
 import Container from './ui/Container';
 
@@ -63,21 +63,34 @@ const About = () => (
           </blockquote>
 
           {/* Teevexa callout */}
-          <a
-            href="https://www.teevexa.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full group flex items-start gap-3 bg-gray-50 dark:bg-gray-800 hover:bg-indigo-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600 rounded-xl p-4 transition-all"
-          >
-            <div>
-              <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                Teevexa — Product Development Studio
-              </p>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed">
-                We design, build, and scale modern digital products for startups and businesses. End-to-end, from idea to launch.
-              </p>
+          <div className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+            <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-0.5">
+              Teevexa — Product Development Studio
+            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
+              We design, build, and scale modern digital products for startups and businesses. End-to-end, from idea to launch.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <a
+                href="https://www.teevexa.com/start-project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-lg transition-colors"
+              >
+                <ArrowRight size={13} />
+                Start a Project
+              </a>
+              <a
+                href="https://www.teevexa.com/book-consultation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold bg-emerald-50 dark:bg-emerald-900/30 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 px-3 py-2 rounded-lg transition-colors"
+              >
+                <CalendarDays size={13} />
+                Free Consultation
+              </a>
             </div>
-          </a>
+          </div>
         </motion.div>
 
         {/* Right — bio */}

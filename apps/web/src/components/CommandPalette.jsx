@@ -1,20 +1,24 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { scroller } from 'react-scroll';
-import { Search, User, Code, Folder, BarChart2, Mail, FileText, Github, Linkedin, X } from 'lucide-react';
+import { Search, User, Briefcase, Layers, Code, Folder, BarChart2, Mail, FileText, Github, Linkedin, X } from 'lucide-react';
 
 const COMMANDS = [
-  { id: 'about',     label: 'Go to About',     icon: User,     type: 'scroll',  target: 'about' },
-  { id: 'skills',    label: 'Go to Skills',    icon: Code,     type: 'scroll',  target: 'skills' },
-  { id: 'projects',  label: 'Go to Projects',  icon: Folder,   type: 'scroll',  target: 'projects' },
-  { id: 'dashboard', label: 'Go to Dashboard', icon: BarChart2,type: 'scroll',  target: 'dashboard' },
-  { id: 'contact',   label: 'Go to Contact',   icon: Mail,     type: 'scroll',  target: 'contact' },
-  { id: 'resume',    label: 'Open Resume',      icon: FileText, type: 'link',    href: '/resume.pdf' },
-  { id: 'github',    label: 'Open GitHub',      icon: Github,   type: 'link',    href: 'https://github.com/benjaminmweribaya' },
-  { id: 'linkedin',  label: 'Open LinkedIn',    icon: Linkedin, type: 'link',    href: 'https://linkedin.com/in/benjamin-mweri-baya' },
+  { id: 'about',      label: 'Go to About',      icon: User,     type: 'scroll', target: 'about' },
+  { id: 'experience', label: 'Go to Experience', icon: Briefcase,type: 'scroll', target: 'experience' },
+  { id: 'services',   label: 'Go to Services',   icon: Layers,   type: 'scroll', target: 'services' },
+  { id: 'skills',     label: 'Go to Skills',     icon: Code,     type: 'scroll', target: 'skills' },
+  { id: 'projects',   label: 'Go to Projects',   icon: Folder,   type: 'scroll', target: 'projects' },
+  { id: 'dashboard',  label: 'Go to Dashboard',  icon: BarChart2,type: 'scroll', target: 'dashboard' },
+  { id: 'contact',    label: 'Go to Contact',    icon: Mail,     type: 'scroll', target: 'contact' },
+  { id: 'resume',     label: 'Open Resume',      icon: FileText, type: 'route',  href: '/resume' },
+  { id: 'github',     label: 'Open GitHub',      icon: Github,   type: 'link',   href: 'https://github.com/benjaminmweribaya' },
+  { id: 'linkedin',   label: 'Open LinkedIn',    icon: Linkedin, type: 'link',   href: 'https://linkedin.com/in/benjamin-mweri-baya' },
 ];
 
 const CommandPalette = () => {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [highlighted, setHighlighted] = useState(0);
@@ -35,10 +39,12 @@ const CommandPalette = () => {
     close();
     if (cmd.type === 'scroll') {
       setTimeout(() => scroller.scrollTo(cmd.target, { smooth: true, duration: 500, offset: -56 }), 100);
+    } else if (cmd.type === 'route') {
+      navigate(cmd.href);
     } else {
       window.open(cmd.href, '_blank', 'noopener,noreferrer');
     }
-  }, [close]);
+  }, [close, navigate]);
 
   useEffect(() => {
     const onKey = (e) => {

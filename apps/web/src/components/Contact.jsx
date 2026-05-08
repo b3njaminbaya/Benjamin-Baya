@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, CheckCircle, AlertCircle } from 'lucide-react';
+import { ExternalLink, CalendarDays, CheckCircle, AlertCircle } from 'lucide-react';
 import Container from './ui/Container';
 
 const Contact = () => {
@@ -162,26 +162,53 @@ const Contact = () => {
               </form>
             </div>
 
-            <motion.a
-              href="https://www.teevexa.com/start-project"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 flex items-center gap-3 bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 border border-indigo-200 dark:border-indigo-700 rounded-xl p-5 transition-colors group"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <ExternalLink className="text-indigo-600 dark:text-indigo-400 shrink-0" size={20} />
-              <div>
-                <p className="font-semibold text-indigo-700 dark:text-indigo-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-200 transition-colors">
-                  Start a Project with Teevexa
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Ready to build something? Work with us — end-to-end product development for startups and businesses.
-                </p>
-              </div>
-            </motion.a>
+            <div className="mt-6 space-y-3">
+              <p className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-widest text-center">
+                Or work with Teevexa
+              </p>
+
+              <motion.a
+                href="https://www.teevexa.com/start-project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 border border-indigo-200 dark:border-indigo-700 rounded-xl p-5 transition-all group"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <ExternalLink className="text-indigo-500 dark:text-indigo-400 shrink-0" size={20} />
+                <div>
+                  <p className="font-semibold text-indigo-700 dark:text-indigo-300 group-hover:text-indigo-600 dark:group-hover:text-indigo-200 transition-colors">
+                    Start a Project
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    Ready to build? End-to-end product development for startups and businesses.
+                  </p>
+                </div>
+              </motion.a>
+
+              <motion.a
+                href="https://www.teevexa.com/book-consultation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-emerald-50 dark:bg-emerald-900/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800/60 rounded-xl p-5 transition-all group"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.18 }}
+                viewport={{ once: true }}
+              >
+                <CalendarDays className="text-emerald-600 dark:text-emerald-400 shrink-0" size={20} />
+                <div>
+                  <p className="font-semibold text-emerald-700 dark:text-emerald-300 group-hover:text-emerald-600 dark:group-hover:text-emerald-200 transition-colors">
+                    Book a Free Consultation
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    A focused discovery call — no sales pitch, just honest advice on whether and how we can help.
+                  </p>
+                </div>
+              </motion.a>
+            </div>
           </motion.div>
         )}
       </div>
