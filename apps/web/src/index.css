@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Footer interactive panel animations */
+@keyframes neon-border {
+  0%   { box-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6, 0 0 20px #8b5cf6; }
+  50%  { box-shadow: 0 0 15px #8b5cf6, 0 0 30px #8b5cf6, 0 0 45px #8b5cf6; }
+  100% { box-shadow: 0 0 5px #8b5cf6, 0 0 10px #8b5cf6, 0 0 20px #8b5cf6; }
+}
+
+@keyframes flip-flop {
+  0%, 100% { transform: rotateX(0deg); }
+  50%       { transform: rotateX(30deg); }
+}
+
+.neon-flip {
+  animation: neon-border 2s infinite ease-in-out,
+             flip-flop 3s infinite ease-in-out;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
