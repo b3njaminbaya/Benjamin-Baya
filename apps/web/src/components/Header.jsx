@@ -57,7 +57,7 @@ const Header = () => (
       >
         Hi, I'm{' '}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-violet-400 to-pink-400">
-          Benjamin
+          Benjamin Baya
         </span>
       </motion.h1>
 

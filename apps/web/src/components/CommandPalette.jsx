@@ -13,8 +13,8 @@ const COMMANDS = [
   { id: 'dashboard',  label: 'Go to Dashboard',  icon: BarChart2,type: 'scroll', target: 'dashboard' },
   { id: 'contact',    label: 'Go to Contact',    icon: Mail,     type: 'scroll', target: 'contact' },
   { id: 'resume',     label: 'Open Resume',      icon: FileText, type: 'route',  href: '/resume' },
-  { id: 'github',     label: 'Open GitHub',      icon: Github,   type: 'link',   href: 'https://github.com/benjaminmweribaya' },
-  { id: 'linkedin',   label: 'Open LinkedIn',    icon: Linkedin, type: 'link',   href: 'https://linkedin.com/in/benjamin-mweri-baya' },
+  { id: 'github',     label: 'Open GitHub',      icon: Github,   type: 'link',   href: 'https://github.com/b3njaminbaya' },
+  { id: 'linkedin',   label: 'Open LinkedIn',    icon: Linkedin, type: 'link',   href: 'https://linkedin.com/in/b3njaminbaya' },
 ];
 
 const CommandPalette = () => {

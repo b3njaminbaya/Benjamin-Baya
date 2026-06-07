@@ -5,7 +5,7 @@ import profile from '../assets/profile.png';
 import Container from './ui/Container';
 
 const bio = [
-  "I'm Benjamin Mweri Baya — a software engineer and founder based in Kenya. I design and build modern digital products: custom websites, web applications, mobile apps, business systems, and SaaS platforms for startups, companies, and ambitious teams.",
+  "I'm Benjamin Baya — a software engineer and founder based in Kenya. I design and build modern digital products: custom websites, web applications, mobile apps, business systems, and SaaS platforms for startups, companies, and ambitious teams.",
   "I founded Teevexa to bring enterprise-quality product development within reach of growing businesses. At Teevexa, we provide end-to-end development services — from architecture and design through to deployment and ongoing maintenance — so teams can focus on their product, not the plumbing.",
   "My foundation is a B.Eng in Chemical Engineering from the Technical University of Kenya, complemented by professional Full-Stack training at Moringa School. That engineering mindset shapes how I approach software: systems-first, scalable by default, and built to last.",
 ];
@@ -38,12 +38,12 @@ const About = () => (
         >
           <img
             src={profile}
-            alt="Benjamin Mweri Baya — Founder & Software Engineer"
+            alt="Benjamin Baya — Founder & Software Engineer"
             className="rounded-full w-44 h-44 object-contain border-4 border-indigo-500 shadow-xl"
           />
 
           <div className="text-center md:text-left">
-            <p className="text-lg font-bold text-gray-900 dark:text-white">Benjamin Mweri Baya</p>
+            <p className="text-lg font-bold text-gray-900 dark:text-white">Benjamin Baya</p>
             <p className="text-sm text-indigo-600 dark:text-indigo-400 font-medium mb-1">Software Engineer</p>
             <p className="text-sm text-gray-500 dark:text-gray-400">
               Founder & CEO,{' '}
@@ -59,13 +59,13 @@ const About = () => (
           </div>
 
           <blockquote className="bg-indigo-50 dark:bg-indigo-900/30 border-l-4 border-indigo-500 text-gray-700 dark:text-gray-300 italic p-4 rounded-r-xl text-sm leading-relaxed">
-            "I don't just write code — I build products that solve real problems and help businesses grow."
+            "I don't just write code - I build products that solve real problems and help businesses grow."
           </blockquote>
 
           {/* Teevexa callout */}
           <div className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
             <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 mb-0.5">
-              Teevexa — Product Development Studio
+              Teevexa - Product Development Studio
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-3">
               We design, build, and scale modern digital products for startups and businesses. End-to-end, from idea to launch.

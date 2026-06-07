@@ -10,7 +10,7 @@ const projects = [
     description: "A real-time task management application built for teams — with live updates via WebSocket, collaborative workspaces, and a clean drag-and-drop interface.",
     tech: ["React", "Vite", "Tailwind CSS", "Flask", "PostgreSQL", "WebSocket"],
     image: "/taskly.png",
-    github: "https://github.com/benjaminmweribaya/taskly-app-front-end",
+    github: "https://github.com/b3njaminbaya/taskly-app-front-end",
     liveDemo: "https://taskly-app-iota.vercel.app",
     featured: true,
     details: [
@@ -25,7 +25,7 @@ const projects = [
     description: "A Flask-React platform enabling users to make small, impactful donations toward education, healthcare, and environmental causes — powered by M-Pesa for seamless mobile money payments.",
     tech: ["React", "Flask", "Tailwind CSS", "PostgreSQL", "WebSocket", "M-pesa API", "Payment Gateway"],
     image: "/micro-donations.png",
-    github: "https://github.com/benjaminmweribaya/Micro-Donations-Platform",
+    github: "https://github.com/b3njaminbaya/Micro-Donations-Platform",
     liveDemo: "https://micro-donations-platform.vercel.app",
     featured: true,
     details: [
@@ -40,7 +40,7 @@ const projects = [
     description: "A full-stack e-commerce and consulting platform that allows Becof Organic Chemicals to sell their products, as well as allow users to seek expert advice on various agricultural topics.",
     tech: ["React", "Tailwind", "Flask", "PostgreSQL", "Node.js", "M-pesa API", "Payment Gateway"],
     image: "/becof.png",
-    github: "https://github.com/benjaminmweribaya/becof-organic-chemicals",
+    github: "https://github.com/b3njaminbaya/becof-organic-chemicals",
     liveDemo: "https://becof-organic-chemicals.vercel.app",
     featured: true,
     details: [
@@ -55,7 +55,7 @@ const projects = [
     description: "A community-based platform built with Flask and React that enables users to contribute to impactful causes through monetary donations or volunteer opportunities, complete with M-Pesa integration and a robust donation tracking system.",
     tech: ["React", "Flask", "Tailwind CSS", "Material UI", "Mpesa API", "PostgreSQL"],
     image: "/turkana.png",
-    github: "https://github.com/benjaminmweribaya/turkana-tech-hub",
+    github: "https://github.com/b3njaminbaya/turkana-tech-hub",
     liveDemo: "https://turkana-tech-hub.vercel.app",
     featured: true,
     details: [
@@ -70,7 +70,7 @@ const projects = [
     description: "An interactive React app helping homeowners discover eco-friendly home improvements and visualize potential energy savings — built for clarity, speed, and mobile accessibility.",
     tech: ["React", "Chart.js", "Vercel"],
     image: "/eco-home-guide.png",
-    github: "https://github.com/benjaminmweribaya/eco-home-guide",
+    github: "https://github.com/b3njaminbaya/eco-home-guide",
     liveDemo: "https://eco-home-guide.vercel.app",
     featured: false,
     details: [
@@ -85,8 +85,8 @@ const projects = [
     description: "A zero-framework single-page app that fetches and displays movie characters from a public REST API — demonstrating async JavaScript, DOM manipulation, and responsive UI without any libraries.",
     tech: ["HTML", "CSS", "JavaScript", "REST API"],
     image: "/movie-character.png",
-    github: "https://github.com/benjaminmweribaya/movie-character-explorer",
-    liveDemo: "https://benjaminmweribaya.github.io/movie-character-explorer",
+    github: "https://github.com/b3njaminbaya/movie-character-explorer",
+    liveDemo: "https://b3njaminbaya.github.io/movie-character-explorer",
     featured: false,
     details: [
       "Pure vanilla JS with async/await for REST API data fetching",

@@ -203,7 +203,7 @@ const Dashboard = () => {
         >
           <h3 className="text-indigo-300 text-sm font-semibold mb-5">GitHub Contribution Heatmap</h3>
           <GitHubCalendar
-            username="benjaminmweribaya"
+            username="b3njaminbaya"
             colorScheme="dark"
             blockSize={12}
             blockMargin={4}

@@ -1,8 +1,8 @@
-# Benjamin Mweri Baya — Portfolio
+# Benjamin Baya — Portfolio
 
 Personal developer portfolio and API backend, built as an npm workspaces monorepo.
 
-**Live:** [benjamin-mweri-baya.vercel.app](https://benjamin-mweri-baya.vercel.app)
+**Live:** [benjamin-baya.vercel.app](https://benjamin-baya.vercel.app)
 
 ---
 
@@ -68,8 +68,8 @@ Portfolio/
 
 ```bash
 # Clone
-git clone https://github.com/benjaminmweribaya/Benjamin-Mweri-Baya.git
-cd Benjamin-Mweri-Baya
+git clone https://github.com/b3njaminbaya/Benjamin-Baya.git
+cd Benjamin-Baya
 
 # Install all workspace dependencies
 npm install
@@ -123,8 +123,8 @@ The chatbot degrades gracefully to deterministic responses if `GROQ_API_KEY` is 
 ## Contact
 
 - **Email:** [b3njaminbaya@gmail.com](mailto:b3njaminbaya@gmail.com)
-- **LinkedIn:** [linkedin.com/in/benjamin-mweri-baya](https://linkedin.com/in/benjamin-mweri-baya)
-- **GitHub:** [github.com/benjaminmweribaya](https://github.com/benjaminmweribaya)
+- **LinkedIn:** [linkedin.com/in/b3njaminbaya](https://linkedin.com/in/b3njaminbaya)
+- **GitHub:** [github.com/b3njaminbaya](https://github.com/b3njaminbaya)
 - **Teevexa:** [teevexa.com](https://www.teevexa.com)
 
 ---

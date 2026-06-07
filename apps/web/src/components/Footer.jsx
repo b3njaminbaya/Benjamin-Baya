@@ -52,12 +52,12 @@ const AnimatedPanel = ({ label, to, external, route, index }) => (
 );
 
 const socialLinks = [
-  { href: 'https://github.com/benjaminmweribaya',         icon: <Github size={18} />,   label: 'GitHub' },
-  { href: 'https://linkedin.com/in/benjamin-mweri-baya',  icon: <Linkedin size={18} />, label: 'LinkedIn' },
-  { href: 'https://instagram.com/benjaminmweribaya',      icon: <Instagram size={18} />,label: 'Instagram' },
-  { href: 'https://facebook.com/benjaminmweribaya',       icon: <Facebook size={18} />, label: 'Facebook' },
-  { href: 'https://www.tiktok.com/@benjaminmweribaya',    icon: <SiTiktok size={18} />, label: 'TikTok' },
-  { href: 'https://www.youtube.com/@benjaminmweribaya',   icon: <Youtube size={18} />,  label: 'YouTube' },
+  { href: 'https://github.com/b3njaminbaya',         icon: <Github size={18} />,   label: 'GitHub' },
+  { href: 'https://linkedin.com/in/b3njaminbaya',  icon: <Linkedin size={18} />, label: 'LinkedIn' },
+  { href: 'https://instagram.com/b3njaminbaya',      icon: <Instagram size={18} />,label: 'Instagram' },
+  { href: 'https://facebook.com/b3njaminbaya',       icon: <Facebook size={18} />, label: 'Facebook' },
+  { href: 'https://www.tiktok.com/@b3njaminbaya',    icon: <SiTiktok size={18} />, label: 'TikTok' },
+  { href: 'https://www.youtube.com/@b3njaminbaya',   icon: <Youtube size={18} />,  label: 'YouTube' },
 ];
 
 const Footer = () => (
@@ -119,7 +119,7 @@ const Footer = () => (
         className="inline-flex items-center gap-1.5 text-sm text-indigo-400 hover:text-indigo-300 font-medium transition-colors mb-5"
       >
         <ExternalLink size={13} />
-        Teevexa — Product Development Studio
+        Teevexa - Product Development Studio
       </a>
 
       <h3 className="text-base font-semibold mb-4">Let's Connect</h3>
@@ -139,7 +139,7 @@ const Footer = () => (
       </div>
       <p className="text-sm text-gray-500">
         © {new Date().getFullYear()}{' '}
-        <span className="text-indigo-400 font-semibold">Benjamin Mweri Baya</span>. All rights reserved.
+        <span className="text-indigo-400 font-semibold">Benjamin Baya</span>. All rights reserved.
       </p>
     </motion.div>
   </footer>

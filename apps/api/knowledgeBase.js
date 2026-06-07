@@ -3,17 +3,17 @@
 
 const PORTFOLIO = {
   identity: {
-    name: 'Benjamin Mweri Baya',
+    name: 'Benjamin Baya',
     title: 'Software Engineer & Founder',
     location: 'Kenya',
     email: 'b3njaminbaya@gmail.com',
     phone: '+254 783 797132',
-    github: 'https://github.com/benjaminmweribaya',
-    linkedin: 'https://linkedin.com/in/benjamin-mweri-baya',
+    github: 'https://github.com/b3njaminbaya',
+    linkedin: 'https://linkedin.com/in/b3njaminbaya',
     portfolio: 'https://benjaminbaya.com',
   },
 
-  bio: `Benjamin Mweri Baya is a software engineer and founder based in Kenya. He designs and builds modern digital products: custom websites, web applications, mobile apps, business systems, and SaaS platforms — for startups, companies, and ambitious teams. He founded Teevexa, a product development studio, to bring enterprise-quality software development within reach of growing businesses. His background includes a B.Eng in Chemical Engineering from the Technical University of Kenya and professional Full-Stack training from Moringa School. That engineering mindset shapes how he approaches software: systems-first, scalable by default, built to last.`,
+  bio: `Benjamin Baya is a software engineer and founder based in Kenya. He designs and builds modern digital products: custom websites, web applications, mobile apps, business systems, and SaaS platforms — for startups, companies, and ambitious teams. He founded Teevexa, a product development studio, to bring enterprise-quality software development within reach of growing businesses. His background includes a B.Eng in Chemical Engineering from the Technical University of Kenya and professional Full-Stack training from Moringa School. That engineering mindset shapes how he approaches software: systems-first, scalable by default, built to last.`,
 
   teevexa: {
     name: 'Teevexa',
@@ -211,9 +211,9 @@ const FALLBACKS = {
 
   contact: `You can reach me at b3njaminbaya@gmail.com or via WhatsApp at +254 783 797132. There's also a contact form on this site. I'm currently open to new work — both direct and through Teevexa.`,
 
-  bio: `I'm Benjamin Mweri Baya — a software engineer and founder based in Kenya. I build modern digital products for startups and businesses, and I founded Teevexa, a product development studio. My background is a B.Eng in Chemical Engineering plus professional Full-Stack training at Moringa School.`,
+  bio: `I'm Benjamin Baya — a software engineer and founder based in Kenya. I build modern digital products for startups and businesses, and I founded Teevexa, a product development studio. My background is a B.Eng in Chemical Engineering plus professional Full-Stack training at Moringa School.`,
 
-  github: `My GitHub is github.com/benjaminmweribaya — you'll find my open-source work and project repos there.`,
+  github: `My GitHub is github.com/b3njaminbaya — you'll find my open-source work and project repos there.`,
 
   default: `I'm Benjamin's portfolio assistant. Ask me about his skills, projects, experience, or how to work with him — individually or through Teevexa. What would you like to know?`,
 };
