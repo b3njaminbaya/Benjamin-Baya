@@ -13,15 +13,18 @@ const GROQ_MODEL = 'llama-3.1-8b-instant';
 // ─── CORS ────────────────────────────────────────────────────────────────────
 const allowedOrigins = [
   'http://localhost:3000',
-  'http://localhost:5173', // Vite dev server (P1 migration)
+  'http://localhost:5173',
   process.env.FRONTEND_URL,
 ].filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests without an origin (curl, Postman, server-to-server)
-      if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+      if (!origin) return callback(null, true);
+      // Allow exact matches and all Vercel preview deployments
+      if (allowedOrigins.includes(origin) || /\.vercel\.app$/.test(origin)) {
+        return callback(null, true);
+      }
       callback(new Error('CORS: origin not allowed'));
     },
   })
